@@ -14,8 +14,6 @@ export const HomeLogo = styled.View`
 export const HomeImage = styled.Image``;
 
 export const TripDetailWrapper = styled.View`
-  margin: 20px;
-  margin-top: 50px;
   align-items: center;
   justify-content: center;
 `;
