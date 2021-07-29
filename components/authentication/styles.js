@@ -41,6 +41,6 @@ export const AuthButtonText = styled.Text`
 `;
 
 export const AuthOther = styled.Text`
-  color: ${(props) => props.theme.pink};
+  color: ${(props) => props.theme.black};
   margin-top: 15px;
 `;

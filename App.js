@@ -12,14 +12,20 @@ import RootNavigator from "./components/Navigation/index";
 const theme = {
   mainColor: "#bbd0ff",
   backgroundColor: "#ff758f",
+  pink: "#f283a2",
+  red: "red",
+  white: "#fff",
+  blue: "#90d4ed",
+  black: "#000000",
 };
 export default function App() {
   return (
     <NativeBaseProvider>
-      <ThemeProvider theme={theme}></ThemeProvider>
-      <NavigationContainer>
-        <RootNavigator />
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </ThemeProvider>
     </NativeBaseProvider>
   );
 }
