@@ -22,15 +22,15 @@ class TripStore {
   };
 
   TripDelete = async (TripId) => {
-    // try {
-    //   await axios.delete(`http://localhost:8000/trips/${TripId}`);
-    //   const updatedTrips = this.products.filter(
-    //     (trip) => trip.id !== TripId
-    //   );
-    //   this.trips = updatedTrips;
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      await axios.delete(`http://localhost:8000/trips/${TripId}`);
+      const updatedTrips = this.trips.filter(
+        (trip) => trip.id !== TripId
+      );
+      this.trips = updatedTrips;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   tripAdd = async (newTrip, user) => {
