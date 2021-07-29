@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 
 export const ListWrapper = styled.View`
   margin-left: -8.5;
+  margin-top: -15px;
 `;
 
 export const HomeLogo = styled.View`
