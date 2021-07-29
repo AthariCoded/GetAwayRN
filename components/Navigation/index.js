@@ -1,6 +1,10 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import Signin from "../authentication/Signin";
+import Signup from "../authentication/Signup";
+
+
 //components
 import TripList from "../trips/TripList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -46,7 +50,7 @@ export default function MyTabs() {
         />
         <Tab.Screen
           name="Profile"
-          component={TripList}
+          component={Signin}
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
@@ -62,12 +66,29 @@ export default function MyTabs() {
     <Stack.Navigator>
       <Stack.Screen
         name="Explore"
+
         component={Home}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
+
+        name="Signin"
+        component={Signin}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={{
+          headerShown: false,
+                }}
+/>
+<Stack.Screen
+          
         name="TripDetails"
         component={TripDetails}
         options={({ route }) => {
@@ -75,8 +96,12 @@ export default function MyTabs() {
           return {
             title: trip.title,
           };
+
         }}
       />
     </Stack.Navigator>
   );
-}
+
+};
+
+
