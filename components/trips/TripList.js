@@ -13,6 +13,9 @@ import { ListWrapper, HomeLogo, HomeImage } from "./styles";
 //stores
 import tripStore from "../../stores/tripStore";
 
+//observer
+import { observer } from "mobx-react";
+
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
@@ -36,4 +39,4 @@ const TripList = ({ navigation }) => {
   );
 };
 
-export default TripList;
+export default observer(TripList);
