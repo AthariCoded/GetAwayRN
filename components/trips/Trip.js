@@ -1,8 +1,9 @@
 import React from "react";
 
 //native-base
-import { List, Text } from "native-base";
+import { List } from "native-base";
 
+//styled components
 import {
   TripItemTitle,
   TripListItem,
@@ -10,23 +11,11 @@ import {
   TripItemUsername,
   TripItemProfilePicture,
 } from "./styles";
-import { useState } from "react";
-// import cartStore from "../../stores/cartStore";
-import { Button } from "native-base";
-import { marginTop } from "styled-system";
 
 const Trip = ({ trip, navigation }) => {
-  // const [quantity, setQuantity] = useState(1);
-
-  // const handleAdd = () => {
-  //   cartStore.addToCart({ TripId: Trip.id, quantity });
-  // };
-
   return (
     <List.Item
-    // onPress={() =>
-    //   navigation.navigate("TripDetails", { Trip: Trip })
-    // }
+      onPress={() => navigation.navigate("TripDetails", { trip: trip })}
     >
       <TripListItem>
         <TripDetailImage source={{ uri: trip.image }} />

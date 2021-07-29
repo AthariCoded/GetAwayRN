@@ -1,8 +1,6 @@
 import styled from "styled-components/native";
-import { List } from "native-base";
 
 export const ListWrapper = styled.View`
-  ${"" /* margin-top: 10%; */}
   margin-left: -8.5;
 `;
 
@@ -30,8 +28,8 @@ export const TripDetailImage = styled.Image`
 `;
 
 export const TripDetailTitle = styled.Text`
-  font-weight: bold;
-  font-size: 40px;
+  font-weight: 400;
+  font-size: 45px;
   ${"" /* margin-bottom: 20px; */}
 `;
 
@@ -47,7 +45,7 @@ export const TripItemTitle = styled.Text`
 export const TripItemUsername = styled.Text`
   ${"" /* align-self: flex-start; */}
   font-size: 13px;
-  margin-top: 16px;
+  padding-top: 3px;
 `;
 
 export const TripItemProfilePicture = styled.Image`
@@ -59,8 +57,17 @@ export const TripItemProfilePicture = styled.Image`
   margin-left: 10px;
 `;
 
+export const TripDetailsProfilePicture = styled.Image`
+  width: 55px;
+  height: 55px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-top: 10px;
+`;
+
 export const TripDetailDetails = styled.Text`
   font-size: 20px;
+  margin-top: 20px;
 `;
 
 export const TripListItem = styled.View`

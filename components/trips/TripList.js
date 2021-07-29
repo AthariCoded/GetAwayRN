@@ -1,33 +1,26 @@
 import React from "react";
 
 //native-base
-import { List, ListItem, Text, Spinner } from "native-base";
+import { List, Spinner } from "native-base";
 
 //components
-//import ProductItem from "./ProductItem";
-import { ScrollView, Image } from "react-native";
+import { ScrollView } from "react-native";
 import Trip from "./Trip";
 
 //styles
 import { ListWrapper, HomeLogo, HomeImage } from "./styles";
 
 //stores
-//import productStore from "../../stores/productStore";
 import tripStore from "../../stores/tripStore";
-//{ products, navigation }
-const TripList = () => {
+
+const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
+
+  //change later
   const trips = tripStore.trips;
   const tripList = trips.map((trip) => (
-    <Trip trip={trip} key={trip.id} /> //navigation={navigation}
+    <Trip trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
   ));
-  //   const trips = tripStore.trips.map((trip) => (
-  //     <ListItem>
-  //       <view>
-  //         <Text>i hate react native {trip.title}</Text>
-  //       </view>
-  //     </ListItem>
-  //   ));
 
   return (
     <>

@@ -1,7 +1,4 @@
-// import { StatusBar } from "expo-status-bar";
 import React from "react";
-// import { Button, StyleSheet, Text, View } from "react-native";
-// import Home from "./components/home";
 import "react-native-gesture-handler";
 import { ThemeProvider } from "styled-components";
 import { NavigationContainer } from "@react-navigation/native";
@@ -13,7 +10,7 @@ const theme = {
   backgroundColor: "white",
   secondaryColor: "#4B4B4B",
   lightColor: "#B3B3B3",
-  redColor: "#D8455E",
+  pinkColor: "#ED3293",
 };
 
 export default function App() {

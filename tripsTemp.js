@@ -5,7 +5,7 @@ const trips = [
     image:
       "https://cdnprs.wisconsin.dev/wp-content/uploads/2021/05/mercuremaldiveskoodooresortmaldivesexterior.jpeg",
     description:
-      "Had so much fun. Stayed in a private beach resort. Never wanna leave.",
+      "Stayed in a beautiful, calm resort filled with good ambience, and it had the best staff.. Loved the calm blue waters, woww..!",
     user: "Sarah Almahmid",
     profilePicture: "https://data.whicdn.com/images/325044521/original.jpg",
   },
