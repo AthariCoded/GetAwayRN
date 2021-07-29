@@ -1,6 +1,5 @@
 import { makeAutoObservable } from "mobx";
-//import axios from "axios";
-import trips from "../tripsTemp";
+import axios from "axios";
 
 class TripStore {
   trips = [];
@@ -11,14 +10,13 @@ class TripStore {
   }
 
   fetchTrips = async () => {
-    this.trips = trips;
-    // try {
-    //   const response = await axios.get("http://localhost:8000/trips");
-    //   this.products = response.data;
-    this.loading = false;
-    // } catch (error) {
-    //   console.error("fetchTrips", error);
-    // }
+    try {
+      const response = await axios.get("http://localhost:8000/trips");
+      this.trips = response.data;
+      this.loading = false;
+    } catch (error) {
+      console.error("fetchTrips", error);
+    }
   };
 
   TripDelete = async (TripId) => {

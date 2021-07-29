@@ -12,6 +12,9 @@ import {
   TripItemProfilePicture,
 } from "./styles";
 
+//observer
+import { observer } from "mobx-react";
+
 const Trip = ({ trip, navigation }) => {
   return (
     <List.Item
@@ -27,4 +30,4 @@ const Trip = ({ trip, navigation }) => {
   );
 };
 
-export default Trip;
+export default observer(Trip);
