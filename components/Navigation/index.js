@@ -8,7 +8,7 @@ import Signup from "../authentication/Signup";
 //components
 import TripList from "../trips/TripList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TripDetails from "../trips/TripDetails";
+import TripDetail from "../trips/TripDetail";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -85,12 +85,12 @@ export default function MyTabs() {
         component={Signup}
         options={{
           headerShown: false,
-                }}
-/>
-<Stack.Screen
-          
+        }}
+      />
+      <Stack.Screen
+
         name="TripDetails"
-        component={TripDetails}
+        component={TripDetail}
         options={({ route }) => {
           const { trip } = route.params;
           return {
