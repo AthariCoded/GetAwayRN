@@ -34,6 +34,11 @@ export const ButtonLogin = styled.View`
   }
 `;
 export const ButtonStyling = styled.Text`
-  color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.black};
   font-size: 22px;
+`;
+export const TopStyling = styled.View`
+  height: 40%;
+  align-items: center;
+  justify-content: center;
 `;

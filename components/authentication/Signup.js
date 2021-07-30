@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   AuthTitle,
   AuthContainer,
@@ -18,7 +19,7 @@ const Signup = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signup(user);
-    if (authStore.user) navigation.replace("Home");
+    if (authStore.user) navigation.replace("Explore");
   };
   return (
     <AuthContainer>

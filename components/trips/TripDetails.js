@@ -2,7 +2,7 @@ import React from "react";
 
 //stores
 import tripStore from "../../stores/tripStore";
-
+import authStore from "../../stores/authStore";
 //observer
 import { observer } from "mobx-react";
 
@@ -17,9 +17,9 @@ import {
 } from "./styles";
 
 //native-base
-import { Spinner } from "native-base";
+import { Spinner, Button } from "native-base";
 
-const TripDetails = ({ navigation, route }) => {
+const TripDetails = ({ route }) => {
   const { trip } = route.params;
   if (tripStore.loading) return <Spinner />;
 
