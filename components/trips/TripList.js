@@ -38,7 +38,7 @@ const TripList = ({ navigation }) => {
       {/* <Signout navigation={navigation} /> */}
       <Button
         onPress={
-          authStore.user ? authStore.signout : () => alert("Not logged in!")
+          authStore.user ? authStore.signout : () => alert("Not Signed  in!")
         }
       >
         Signout

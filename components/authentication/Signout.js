@@ -6,7 +6,7 @@
 // const Signout = ({ navigation }) => {
 //   const handleSignout = () => {
 //     authStore.signout();
-//     Alert.alert("Success!", "Signin Again ?", [
+//     Alert.alert("Success!", "Signin ?", [
 //       {
 //         text: "No",
 //         style: "cancel",

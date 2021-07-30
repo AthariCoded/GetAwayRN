@@ -9,7 +9,6 @@ const Home = () => {
     <HomeBackground>
       <Text>GetAway</Text>
 
-      {/* <ButtonStyling onPress={authStore.signout}></ButtonStyling> */}
       <Register />
     </HomeBackground>
   );
