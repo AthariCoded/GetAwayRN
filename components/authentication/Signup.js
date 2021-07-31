@@ -9,7 +9,7 @@ import {
 } from "./styles";
 // stores
 import authStore from "../../stores/authStore";
-
+import { Button } from "native-base";
 import { observer } from "mobx-react";
 
 const Signup = ({ navigation }) => {
@@ -20,7 +20,6 @@ const Signup = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await authStore.signup(user, navigation);
-
   };
 
   return (
@@ -43,6 +42,13 @@ const Signup = ({ navigation }) => {
       <AuthOther onPress={() => navigation.navigate("Signin")}>
         Click here to sign in
       </AuthOther>
+      <Button
+        onPress={
+          authStore.user ? authStore.signout : () => alert("Not Signed  in!")
+        }
+      >
+        Signout
+      </Button>
     </AuthContainer>
   );
 };
