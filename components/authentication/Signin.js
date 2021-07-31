@@ -20,10 +20,12 @@ const Signin = ({ navigation }) => {
     username: "",
     password: "",
   });
+
   const handleSubmit = async () => {
     await authStore.signin(user);
-    if (authStore.user) navigation.replace("Home");
+    if (authStore.user) navigation.replace("Explore");
   };
+
   return (
     <AuthContainer>
       <AuthTitle>Sign in</AuthTitle>

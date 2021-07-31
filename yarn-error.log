@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/16.5.0/bin/node /usr/local/bin/yarn install
+  /usr/local/Cellar/node/16.5.0/bin/node /usr/local/bin/yarn start
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin

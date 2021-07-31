@@ -11,15 +11,18 @@ import {
 import authStore from "../../stores/authStore";
 
 import { observer } from "mobx-react";
+
 const Signup = ({ navigation }) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
+
   const handleSubmit = async () => {
-    await authStore.signup(user);
-    if (authStore.user) navigation.replace("Home");
+    await authStore.signup(user, navigation);
+
   };
+
   return (
     <AuthContainer>
       <AuthTitle>Sign up</AuthTitle>
