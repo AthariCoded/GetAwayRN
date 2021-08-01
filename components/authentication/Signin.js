@@ -22,8 +22,8 @@ const Signin = ({ navigation }) => {
   });
 
   const handleSubmit = async () => {
-    await authStore.signin(user);
-    if (authStore.user) navigation.replace("Explore");
+    await authStore.signin(user, navigation);
+    // if (authStore.user) navigation.replace("Explore");
   };
 
   return (

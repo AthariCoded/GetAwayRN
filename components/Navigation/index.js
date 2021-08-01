@@ -34,7 +34,7 @@ export default function MyTabs() {
           options={{
             tabBarLabel: "Explore",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="compass-outline" size={34} color="white" />
+              <Ionicons name="compass-outline" size={30} color="white" />
             ),
           }}
         />
@@ -44,7 +44,7 @@ export default function MyTabs() {
           options={{
             tabBarLabel: "Add Trip",
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name="add-circle-outline" size={34} color="white" />
+              <Ionicons name="add-circle-outline" size={30} color="white" />
             ),
           }}
         />
@@ -54,7 +54,7 @@ export default function MyTabs() {
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome name="user-o" size={27} color="white" />
+              <FontAwesome name="user-o" size={25} color="white" />
             ),
           }}
         />

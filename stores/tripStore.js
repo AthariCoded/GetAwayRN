@@ -35,7 +35,8 @@ class TripStore {
       const formData = new FormData();
       for (const key in newTrip) formData.append(key, newTrip[key]);
       const response = await instance.post("/trips", newTrip);
-      navigation.replace("Explore");
+      this.fetchTrips();
+      navigation.navigate("Explore");
     } catch (error) {
       console.error(error);
     }

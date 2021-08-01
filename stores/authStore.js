@@ -20,10 +20,11 @@ class AuthStore {
     }
   };
 
-  signin = async (userData) => {
+  signin = async (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
+      navigation.replace("Explore");
       console.log(res.data.token);
       console.log(this.user);
     } catch (error) {
