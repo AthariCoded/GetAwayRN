@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <HomeBackground>
       <Text>GetAway</Text>
+      {/* what about the register component? why not directly to signin or signup page? */}
       <Register />
     </HomeBackground>
   );

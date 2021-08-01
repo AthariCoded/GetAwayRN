@@ -9,8 +9,9 @@ import authStore from "../../stores/authStore";
 const Register = () => {
   const navigation = useNavigation();
   const handlePress = () => {
+    //what happened if the the value of the user changes? and the component is not an observer?
     if (authStore.user) {
-      navigation.navigate("Home");
+      navigation.navigate("Home"); //so if the user is signed in why would you navigate him to the Homepage? please check your home page
     } else {
       Alert.alert(
         "Sign in",

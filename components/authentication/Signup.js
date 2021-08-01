@@ -42,6 +42,7 @@ const Signup = ({ navigation }) => {
       <AuthOther onPress={() => navigation.navigate("Signin")}>
         Click here to sign in
       </AuthOther>
+      {/* if the user is not signed in, why would he see the sign out button?  */}
       <Button
         onPress={
           authStore.user ? authStore.signout : () => alert("Not Signed  in!")

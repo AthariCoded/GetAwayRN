@@ -15,6 +15,7 @@ import {
 //observer
 import { observer } from "mobx-react";
 
+// I highly recommend to change the name of the component to be TripItem
 const Trip = ({ trip, navigation }) => {
   return (
     <List.Item

@@ -14,6 +14,8 @@ class AuthStore {
     try {
       const res = await instance.post("/signup", newUser);
       this.setUser(res.data.token);
+      /**so you are doing the navigation.replace twice (signup and signin)
+       *  don't you think you can call it once in???**/
       navigation.replace("Explore");
     } catch (error) {
       console.error(error);
@@ -25,6 +27,7 @@ class AuthStore {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
       navigation.replace("Explore");
+      //remove the logs
       console.log(res.data.token);
       console.log(this.user);
     } catch (error) {
@@ -39,6 +42,7 @@ class AuthStore {
   };
 
   setUser = async (token) => {
+    //remove the log
     console.log("setting user");
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;

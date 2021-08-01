@@ -44,11 +44,13 @@ const TripDetails = ({ navigation, route }) => {
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
+
+        
         {(authStore.user.id === trip.userId) && (
           <Button
             onPress={submitHandler}
             title="delete"
-            color="gray"
+            color="red"
           ></Button>
         )}
 
