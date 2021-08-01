@@ -1,4 +1,3 @@
-
 import React from "react";
 import "react-native-gesture-handler";
 const theme = {
@@ -7,13 +6,12 @@ const theme = {
   secondaryColor: "#4B4B4B",
   lightColor: "#B3B3B3",
   pinkColor: "#ED3293",
-    pink: "#f283a2",
+  pink: "#ED3293",
   red: "red",
   white: "#fff",
   blue: "#90d4ed",
   black: "#000000",
 };
-
 
 // styles
 import { ThemeProvider } from "styled-components";

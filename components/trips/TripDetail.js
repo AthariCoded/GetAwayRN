@@ -32,7 +32,7 @@ const TripDetails = ({ navigation, route }) => {
           className="details"
           source={{ uri: trip.profilePicture }}
         />
-        <TripItemUsername>{trip.user}</TripItemUsername>
+        {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
       </TripDetailWrapper>
     </>

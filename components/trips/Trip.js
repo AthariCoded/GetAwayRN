@@ -24,7 +24,7 @@ const Trip = ({ trip, navigation }) => {
         <TripDetailImage source={{ uri: trip.image }} />
         <TripItemProfilePicture source={{ uri: trip.profilePicture }} />
         <TripItemTitle>{trip.title}</TripItemTitle>
-        <TripItemUsername>by {trip.user}</TripItemUsername>
+        {/* <TripItemUsername>by {trip.user}</TripItemUsername> */}
       </TripListItem>
     </List.Item>
   );

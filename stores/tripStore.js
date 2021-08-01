@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import axios from "axios";
+import instance from "./instance";
 
 class TripStore {
   trips = [];
@@ -11,7 +12,7 @@ class TripStore {
 
   fetchTrips = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/trips");
+      const response = await instance.get("/trips");
       this.trips = response.data;
       this.loading = false;
     } catch (error) {
@@ -22,28 +23,22 @@ class TripStore {
   TripDelete = async (TripId) => {
     try {
       await axios.delete(`http://localhost:8000/trips/${TripId}`);
-      const updatedTrips = this.trips.filter(
-        (trip) => trip.id !== TripId
-      );
+      const updatedTrips = this.trips.filter((trip) => trip.id !== TripId);
       this.trips = updatedTrips;
     } catch (error) {
       console.error(error);
     }
   };
 
-  tripAdd = async (newTrip, user) => {
-    // try {
-    //   const formData = new FormData();
-    //   for (const key in newTrip) formData.append(key, newTrip[key]);
-    //   const response = await axios.post(
-    //     `http://localhost:8000/brands/${user.id}/trips`,
-    //     formData
-    //   );
-    //   this.products.push(response.data);
-    //   brand.products.push({ id: response.data.id });
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  tripAdd = async (newTrip, navigation) => {
+    try {
+      const formData = new FormData();
+      for (const key in newTrip) formData.append(key, newTrip[key]);
+      const response = await instance.post("/trips", newTrip);
+      navigation.replace("Explore");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   TripUpdate = async (updatedTrip) => {

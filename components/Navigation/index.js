@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 
-
 //components
 import TripList from "../trips/TripList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -13,6 +12,7 @@ import TripDetail from "../trips/TripDetail";
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import AddTrip from "../trips/AddTrip";
 
 //navigation
 const Stack = createStackNavigator();
@@ -40,7 +40,7 @@ export default function MyTabs() {
         />
         <Tab.Screen
           name="Add"
-          component={TripList}
+          component={AddTrip}
           options={{
             tabBarLabel: "Add Trip",
             tabBarIcon: ({ color, size }) => (
@@ -66,14 +66,12 @@ export default function MyTabs() {
     <Stack.Navigator>
       <Stack.Screen
         name="Explore"
-
         component={Home}
         options={{
           headerShown: false,
         }}
       />
       <Stack.Screen
-
         name="Signin"
         component={Signin}
         options={{
@@ -88,7 +86,6 @@ export default function MyTabs() {
         }}
       />
       <Stack.Screen
-
         name="TripDetails"
         component={TripDetail}
         options={({ route }) => {
@@ -96,12 +93,8 @@ export default function MyTabs() {
           return {
             title: trip.title,
           };
-
         }}
       />
     </Stack.Navigator>
   );
-
-};
-
-
+}
