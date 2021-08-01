@@ -2,6 +2,7 @@ import React from "react";
 
 //stores
 import tripStore from "../../stores/tripStore";
+import authStore from "../../stores/authStore";
 
 //observer
 import { observer } from "mobx-react";
@@ -43,11 +44,13 @@ const TripDetails = ({ navigation, route }) => {
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
-        <Button
-          onPress={submitHandler}
-          title="delete"
-          color="gray"
-        ></Button>
+        {(authStore.user.id === trip.userId) && (
+          <Button
+            onPress={submitHandler}
+            title="delete"
+            color="gray"
+          ></Button>
+        )}
 
       </TripDetailWrapper>
     </>
