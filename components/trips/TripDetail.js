@@ -26,6 +26,11 @@ const TripDetails = ({ navigation, route }) => {
   const { trip } = route.params;
   if (tripStore.loading) return <Spinner />;
 
+  const submitHandler = async () => {
+    await tripStore.tripDelete(trip.id);
+    navigation.replace("Explore");
+  };
+
   return (
     <>
       <TripDetailWrapper>
@@ -39,7 +44,7 @@ const TripDetails = ({ navigation, route }) => {
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
         <Button
-          onPress={() => tripStore.tripDelete(trip.id)}
+          onPress={submitHandler}
           title="delete"
           color="gray"
         ></Button>
