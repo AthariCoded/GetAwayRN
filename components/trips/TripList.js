@@ -5,7 +5,7 @@ import { List, Spinner } from "native-base";
 
 //components
 import { ScrollView } from "react-native";
-import Trip from "./Trip";
+import TripItem from "./TripItem";
 
 //styles
 import { ListWrapper, HomeLogo, HomeImage } from "./styles";
@@ -22,7 +22,7 @@ const TripList = ({ navigation }) => {
   //change later
   const trips = tripStore.trips;
   const tripList = trips.map((trip) => (
-    <Trip trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
+    <TripItem trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
   ));
 
   return (

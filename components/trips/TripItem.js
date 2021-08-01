@@ -15,7 +15,7 @@ import {
 //observer
 import { observer } from "mobx-react";
 
-const Trip = ({ trip, navigation }) => {
+const TripItem = ({ trip, navigation }) => {
   return (
     <List.Item
       onPress={() => navigation.navigate("TripDetails", { trip: trip })}
@@ -30,4 +30,4 @@ const Trip = ({ trip, navigation }) => {
   );
 };
 
-export default observer(Trip);
+export default observer(TripItem);
