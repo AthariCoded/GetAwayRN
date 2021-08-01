@@ -28,6 +28,7 @@ const AddTrip = () => {
 
   const handleAddTrip = async () => {
     await tripStore.tripAdd(trip, navigation);
+    // navigation.navigate("Explore");
     console.log(trip);
   };
 
