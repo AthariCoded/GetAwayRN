@@ -20,9 +20,9 @@ class TripStore {
     }
   };
 
-  TripDelete = async (TripId) => {
+  tripDelete = async (TripId) => {
     try {
-      await axios.delete(`http://localhost:8000/trips/${TripId}`);
+      await instance.delete(`/trips/${TripId}`);
       const updatedTrips = this.trips.filter((trip) => trip.id !== TripId);
       this.trips = updatedTrips;
     } catch (error) {

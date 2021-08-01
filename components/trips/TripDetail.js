@@ -19,6 +19,9 @@ import {
 //native-base
 import { Spinner } from "native-base";
 
+//button
+import { Button } from "react-native";
+
 const TripDetails = ({ navigation, route }) => {
   const { trip } = route.params;
   if (tripStore.loading) return <Spinner />;
@@ -34,6 +37,13 @@ const TripDetails = ({ navigation, route }) => {
         />
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
+
+        <Button
+          onPress={() => tripStore.tripDelete(trip.id)}
+          title="delete"
+          color="gray"
+        ></Button>
+
       </TripDetailWrapper>
     </>
   );
