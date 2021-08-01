@@ -19,6 +19,8 @@ import { observer } from "mobx-react";
 const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
+  //you will render the list twice, once in the explore and once in the user profile...
+  // you will defo need a filter
   //change later
   const trips = tripStore.trips;
   const tripList = trips.map((trip) => (

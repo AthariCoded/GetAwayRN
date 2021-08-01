@@ -43,12 +43,8 @@ const TripDetails = ({ navigation, route }) => {
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
-        <Button
-          onPress={submitHandler}
-          title="delete"
-          color="gray"
-        ></Button>
-
+        {/* delete button shouldnot be grey + it is always better to warn(alert) the user before the delete*/}
+        <Button onPress={submitHandler} title="delete" color="gray"></Button>
       </TripDetailWrapper>
     </>
   );

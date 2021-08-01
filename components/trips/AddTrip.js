@@ -28,13 +28,18 @@ const AddTrip = () => {
 
   const handleAddTrip = async () => {
     await tripStore.tripAdd(trip, navigation);
+    //remove this👇🏻
     // navigation.navigate("Explore");
     console.log(trip);
+    //*****👆🏻
   };
 
   const navigation = useNavigation();
-  console.log(authStore.user);
+  console.log(authStore.user); //remove the log
+
+  //what would happen if the session ends while I'm in this component?
   if (authStore.user) {
+    // if this will be empty you should adjust your condition right?
     // navigation.navigate("AddTrip");
   } else {
     Alert.alert(
@@ -60,6 +65,7 @@ const AddTrip = () => {
         placeholder="Trip Title"
         // keyboardType="numeric"
       />
+      {/* remove the comment 👆🏻 */}
       <AddTripLabels>Trip Description</AddTripLabels>
       <TextInput
         style={styles2.input}
