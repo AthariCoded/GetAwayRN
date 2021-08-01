@@ -48,7 +48,7 @@ const TripDetails = ({ navigation, route }) => {
           <Button
             onPress={submitHandler}
             title="delete"
-            color="gray"
+            color="red"
           ></Button>
         )}
 
