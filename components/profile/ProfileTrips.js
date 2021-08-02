@@ -4,7 +4,7 @@ import React from "react";
 import { List, Spinner } from "native-base";
 
 //components
-import Trip from "../trips/Trip";
+import TripItem from "../trips/TripItem";
 
 //styles
 import { ListWrapper } from "../trips/styles";
@@ -18,7 +18,7 @@ import { observer } from "mobx-react";
 const TripList = ({ trips }) => {
   if (tripStore.loading) return <Spinner />;
 
-  const tripList = trips.map((trip) => <Trip trip={trip} key={trip.id} />);
+  const tripList = trips.map((trip) => <TripItem trip={trip} key={trip.id} />);
 
   return (
     <ListWrapper style={{ marginBottom: 90 }}>
