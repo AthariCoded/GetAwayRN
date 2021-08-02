@@ -1,9 +1,5 @@
 import { makeAutoObservable } from "mobx";
-
-
 import authStore from "./authStore";
-
-
 import instance from "./instance";
 
 class TripStore {
@@ -59,7 +55,7 @@ class TripStore {
     }
   };
 
-
+}
 const tripStore = new TripStore();
 tripStore.fetchTrips();
 export default tripStore;

@@ -57,6 +57,7 @@ const TripDetails = ({ route }) => {
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
+        {/*
         <Button
           onPress={() => tripStore.tripDelete(trip.id)}
           title="delete"
@@ -67,7 +68,7 @@ const TripDetails = ({ route }) => {
         ) : (
           <></>
         )}
-
+        */}
         {(authStore.user.id === trip.userId) && (
           <Button
             onPress={submitHandler}
