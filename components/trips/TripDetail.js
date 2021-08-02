@@ -4,9 +4,11 @@ import React from "react";
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
 
+
+
 //observer
 import { observer } from "mobx-react";
-
+import UpdateTrip from "./UpdateTrip";
 //styled components
 import {
   TripDetailTitle,
@@ -23,8 +25,12 @@ import { Spinner } from "native-base";
 //button
 import { Button, Alert } from "react-native";
 
-const TripDetails = ({ navigation, route }) => {
+// buttons
+import UpdateButton from "../buttons/UpdateButton";
+
+const TripDetails = ({ route }) => {
   const { trip } = route.params;
+
   if (tripStore.loading) return <Spinner />;
 
   const deleteHandler = async () => {
@@ -50,6 +56,17 @@ const TripDetails = ({ navigation, route }) => {
         />
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
+
+        <Button
+          onPress={() => tripStore.tripDelete(trip.id)}
+          title="delete"
+          color="gray"
+        ></Button>
+        {authStore.user.id === +trip.userId ? (
+          <UpdateButton oldTrip={trip} />
+        ) : (
+          <></>
+        )}
 
         {(authStore.user.id === trip.userId) && (
           <Button

@@ -37,3 +37,7 @@ export const ButtonStyling = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-size: 22px;
 `;
+
+export const UpdateButtonStyle = styled.Text`
+  color: ${(props) => props.theme.pink};
+`;

@@ -1,4 +1,9 @@
 import { makeAutoObservable } from "mobx";
+
+
+import authStore from "./authStore";
+
+
 import instance from "./instance";
 
 class TripStore {
@@ -41,25 +46,19 @@ class TripStore {
     }
   };
 
-  TripUpdate = async (updatedTrip) => {
-    // try {
-    //   const formData = new FormData();
-    //   for (const key in updatedTrip) formData.append(key, updatedTrip[key]);
-    //   const response = await axios.put(
-    //     `http://localhost:8000/trips/${updatedTrip.id}`,
-    //     formData
-    //   );
-    //   this.trips[this.trips.findIndex((trip) => trip.id === response.data.id)] =
-    //     {
-    //       ...response.data,
-    //     };
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  tripUpdate = async (updatedTrip) => {
+    try {
+      const formData = new FormData();
+      for (const key in updatedTrip) formData.append(key, updatedTrip[key]);
+      await instance.put(`/trips/${updatedTrip.id}`, formData);
+      const foundTrip = this.trips.find((trip) => trip.id === updatedTrip.id);
+
+      for (const key in foundTrip) foundTrip[key] = updatedTrip[key];
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  getTripById = (tripId) => this.trips.find((trip) => trip.id === tripId);
-}
 
 const tripStore = new TripStore();
 tripStore.fetchTrips();

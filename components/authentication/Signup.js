@@ -10,6 +10,7 @@ import {
 // stores
 import authStore from "../../stores/authStore";
 import { Button } from "native-base";
+import { Text } from "react-native";
 import { observer } from "mobx-react";
 
 const Signup = ({ navigation }) => {
@@ -42,13 +43,13 @@ const Signup = ({ navigation }) => {
       <AuthOther onPress={() => navigation.navigate("Signin")}>
         Click here to sign in
       </AuthOther>
-      <Button
-        onPress={
-          authStore.user ? authStore.signout : () => alert("Not Signed  in!")
-        }
-      >
-        Signout
-      </Button>
+      {authStore.user ? (
+        <Button onPress={authStore.signout}>
+          <Text>Signout</Text>
+        </Button>
+      ) : (
+        <></>
+      )}
     </AuthContainer>
   );
 };

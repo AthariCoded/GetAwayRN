@@ -17,6 +17,7 @@ import Signup from "../authentication/Signup";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import AddTrip from "../trips/AddTrip";
+import UpdateTrip from "../trips/UpdateTrip";
 
 //navigation
 const Stack = createStackNavigator();
@@ -55,6 +56,7 @@ export default function MyTabs() {
             ),
           }}
         />
+
         <Tab.Screen
           name="Profile"
           component={profileComp}
@@ -104,6 +106,13 @@ export default function MyTabs() {
           return {
             title: trip.title,
           };
+        }}
+      />
+      <Stack.Screen
+        name="UpdateTrip"
+        component={UpdateTrip}
+        options={{
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
