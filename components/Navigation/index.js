@@ -1,13 +1,16 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Signin from "../authentication/Signin";
-import Signup from "../authentication/Signup";
+//stores
+import authStore from "../../stores/authStore";
 
 //components
 import TripList from "../trips/TripList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TripDetail from "../trips/TripDetail";
+import ProfilePage from "../profile/ProfilePage";
+import Signin from "../authentication/Signin";
+import Signup from "../authentication/Signup";
 
 //icons
 import { Ionicons } from "@expo/vector-icons";
@@ -20,6 +23,9 @@ const Tab = createBottomTabNavigator();
 
 export default function MyTabs() {
   function Home() {
+    //only show profile page when user is signed in. otherwise show signin/sign up
+    let profileComp = null;
+    authStore.user ? (profileComp = ProfilePage) : (profileComp = Signin);
     return (
       //bottom tab bar
       <Tab.Navigator
@@ -50,7 +56,7 @@ export default function MyTabs() {
         />
         <Tab.Screen
           name="Profile"
-          component={Signin}
+          component={profileComp}
           options={{
             tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
