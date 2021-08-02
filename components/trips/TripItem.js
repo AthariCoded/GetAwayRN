@@ -16,12 +16,13 @@ import {
 import { observer } from "mobx-react";
 
 const TripItem = ({ trip, navigation }) => {
-  /*
-    const profileHandler = async () => {
-      await profileStore.fetchProfile(trip.userId);
-      navigation.navigate("ProfilePage", { userId: trip.userId })
-    };
-  */
+
+  const profileHandler = async () => {
+    // await profileStore.fetchProfile(trip.userId);
+    //{ userId: trip.userId }
+    navigation.navigate("ProfilePage");
+  };
+
   return (
     <List.Item
       onPress={() => navigation.navigate("TripDetails", { trip: trip })}
@@ -30,7 +31,7 @@ const TripItem = ({ trip, navigation }) => {
         <TripDetailImage source={{ uri: trip.image }} />
         <TripItemProfilePicture source={{ uri: trip.profilePicture }} />
         <TripItemTitle>{trip.title}</TripItemTitle>
-        <TripItemUsername /*onPress={profileHandler} */>by {trip.user.username} </TripItemUsername>
+        <TripItemUsername onPress={profileHandler} >by {trip.user.username} </TripItemUsername>
       </TripListItem>
     </List.Item>
   );
