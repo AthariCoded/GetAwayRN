@@ -5,13 +5,14 @@ import { List, Spinner } from "native-base";
 
 //components
 import { ScrollView } from "react-native";
-import Trip from "./Trip";
+import TripItem from "./TripItem";
 
 //styles
 import { ListWrapper, HomeLogo, HomeImage } from "./styles";
 
 //stores
 import tripStore from "../../stores/tripStore";
+import authStore from "../../stores/authStore";
 
 //observer
 import { observer } from "mobx-react";
@@ -20,9 +21,13 @@ const TripList = ({ navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
   //change later
-  const trips = tripStore.trips;
+  let trips = tripStore.trips;
+  if (authStore.user)
+    trips = trips.filter((trip) => trip.userId !== authStore.user.id);
   const tripList = trips.map((trip) => (
-    <Trip trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
+
+    <TripItem trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
+
   ));
 
   return (

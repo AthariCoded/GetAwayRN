@@ -4,6 +4,8 @@ import decode from "jwt-decode";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import profileStore from "./profileStore";
+
 class AuthStore {
   user = null;
   constructor() {
@@ -20,10 +22,14 @@ class AuthStore {
     }
   };
 
-  signin = async (userData) => {
+  signin = async (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
+
+
+      navigation.replace("Explore");
+
     } catch (error) {
       console.error(error);
     }
@@ -36,10 +42,10 @@ class AuthStore {
   };
 
   setUser = async (token) => {
-    console.log("setting user");
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     this.user = decode(token);
+    profileStore.fetchUserProfile(this.user.profile); //get profile when user logs/signs in
   };
 
   checkForToken = async () => {
@@ -57,4 +63,5 @@ class AuthStore {
 }
 const authStore = new AuthStore();
 authStore.checkForToken();
+// if (this.user) profileStore.fetchUserProfile();
 export default authStore;

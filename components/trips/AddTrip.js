@@ -28,14 +28,10 @@ const AddTrip = () => {
 
   const handleAddTrip = async () => {
     await tripStore.tripAdd(trip, navigation);
-    console.log(trip);
   };
 
   const navigation = useNavigation();
-  console.log(authStore.user);
-  if (authStore.user) {
-    // navigation.navigate("AddTrip");
-  } else {
+  if (!authStore.user) {
     Alert.alert(
       "You must have an account",
       "You need to sign in to continue.",
@@ -57,7 +53,6 @@ const AddTrip = () => {
         style={styles.input}
         onChangeText={(title) => setTrip({ ...trip, title })}
         placeholder="Trip Title"
-        // keyboardType="numeric"
       />
       <AddTripLabels>Trip Description</AddTripLabels>
       <TextInput
