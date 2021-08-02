@@ -21,15 +21,22 @@ import {
 import { Spinner } from "native-base";
 
 //button
-import { Button } from "react-native";
+import { Button, Alert } from "react-native";
 
 const TripDetails = ({ navigation, route }) => {
   const { trip } = route.params;
   if (tripStore.loading) return <Spinner />;
 
-  const submitHandler = async () => {
+  const deleteHandler = async () => {
     await tripStore.tripDelete(trip.id);
     navigation.replace("Explore");
+  }
+
+  const submitHandler = () => {
+    Alert.alert("Are you sure you want to delete trip!", "", [
+      { text: "OK", onPress: deleteHandler },
+      { text: "cancel", onPress: () => console.log("cancel"), style: "cancel" }
+    ]);
   };
 
   return (

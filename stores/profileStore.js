@@ -9,9 +9,9 @@ class ProfileStore {
         makeAutoObservable(this);
     }
 
-    fetchProfile = async () => {
+    fetchProfile = async (userId) => {
         try {
-            const response = await instance.get("/profile");
+            const response = await instance.get(`/profile/${userId}`);
             this.profile = response.data;
             this.loading = false;
         } catch (error) {
@@ -22,5 +22,4 @@ class ProfileStore {
 }
 
 const profileStore = new ProfileStore();
-profileStore.fetchTrips();
 export default profileStore;
