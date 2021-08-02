@@ -12,6 +12,7 @@ import ProfilePage from "../profile/ProfilePage";
 import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 
+
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -90,6 +91,10 @@ export default function MyTabs() {
         options={{
           headerShown: false,
         }}
+      />
+      <Stack.Screen
+        name="ProfilePage"
+        component={ProfilePage}
       />
       <Stack.Screen
         name="TripDetails"

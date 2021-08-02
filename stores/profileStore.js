@@ -33,6 +33,16 @@ class ProfileStore {
       console.error(error);
     }
   };
+  
+    fetchProfile = async (userId) => {
+        try {
+            const response = await instance.get(`/profile/${userId}`);
+            this.profile = response.data;
+            this.loading = false;
+        } catch (error) {
+            console.error("fetchProfile", error);
+        }
+    };
 }
 
 const profileStore = new ProfileStore();

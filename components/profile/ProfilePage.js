@@ -147,3 +147,4 @@ const editStyles = StyleSheet.create({
   },
 });
 export default observer(ProfilePage);
+

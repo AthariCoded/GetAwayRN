@@ -5,7 +5,7 @@ import { List, Spinner } from "native-base";
 
 //components
 import { ScrollView } from "react-native";
-import Trip from "./Trip";
+import TripItem from "./TripItem";
 
 //styles
 import { ListWrapper, HomeLogo, HomeImage } from "./styles";
@@ -25,7 +25,9 @@ const TripList = ({ navigation }) => {
   if (authStore.user)
     trips = trips.filter((trip) => trip.userId !== authStore.user.id);
   const tripList = trips.map((trip) => (
-    <Trip trip={trip} key={trip.id} navigation={navigation} />
+
+    <TripItem trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
+
   ));
 
   return (
