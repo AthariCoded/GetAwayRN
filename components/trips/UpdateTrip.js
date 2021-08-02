@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import React from "react";
 import { useState } from "react";
 
@@ -18,20 +17,20 @@ import {
   AddTripButton,
   AddTripButtonText,
 } from "./styles";
-
-const AddTrip = () => {
-  const [trip, setTrip] = useState({
-    title: "",
-    description: "",
-    image: "",
-  });
-
-  const handleAddTrip = async () => {
-    await tripStore.tripAdd(trip, navigation);
-  };
+import { observer } from "mobx-react";
+const UpdateTrip = ({ route }) => {
+  const { oldTrip } = route.params;
+  const [trip, setTrip] = useState(oldTrip);
 
   const navigation = useNavigation();
-  if (!authStore.user) {
+  const handleUpdateTrip = async () => {
+    await tripStore.tripUpdate(trip, navigation);
+    navigation.navigate("Explore");
+  };
+
+  //   console.log("user", authStore.user);
+  if (authStore.user) {
+  } else {
     Alert.alert(
       "You must have an account",
       "You need to sign in to continue.",
@@ -45,14 +44,17 @@ const AddTrip = () => {
       { cancelable: false }
     );
   }
+  //   console.log("trip", trip);
+
   return (
     <SafeAreaView>
-      <AddTripTitle> Add New Trip</AddTripTitle>
+      <AddTripTitle> Update New Trip</AddTripTitle>
       <AddTripLabels>Trip Title</AddTripLabels>
       <TextInput
         style={styles.input}
         onChangeText={(title) => setTrip({ ...trip, title })}
         placeholder="Trip Title"
+        defaultValue={oldTrip.title}
       />
       <AddTripLabels>Trip Description</AddTripLabels>
       <TextInput
@@ -61,15 +63,17 @@ const AddTrip = () => {
         multiline
         numberOfLines={8}
         placeholder="Trip description"
+        defaultValue={oldTrip.description}
       />
-      <AddTripLabels>Trip Image Address</AddTripLabels>
+      <AddTripLabels>Trip Image Adress</AddTripLabels>
       <TextInput
         style={styles.input}
         onChangeText={(image) => setTrip({ ...trip, image })}
         placeholder="Trip Image Adress"
+        defaultValue={oldTrip.image}
       />
-      <AddTripButton onPress={handleAddTrip}>
-        <AddTripButtonText>Add</AddTripButtonText>
+      <AddTripButton onPress={handleUpdateTrip}>
+        <AddTripButtonText>Update</AddTripButtonText>
       </AddTripButton>
     </SafeAreaView>
   );
@@ -93,4 +97,4 @@ const styles2 = StyleSheet.create({
     borderRadius: 10,
   },
 });
-export default observer(AddTrip);
+export default observer(UpdateTrip);
