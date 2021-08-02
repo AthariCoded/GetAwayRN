@@ -24,8 +24,6 @@ class AuthStore {
     try {
       const res = await instance.post("/signin", userData);
       this.setUser(res.data.token);
-      console.log(res.data.token);
-      console.log(this.user);
     } catch (error) {
       console.error(error);
     }

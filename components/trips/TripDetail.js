@@ -2,10 +2,10 @@ import React from "react";
 
 //stores
 import tripStore from "../../stores/tripStore";
-
+import authStore from "../../stores/authStore";
 //observer
 import { observer } from "mobx-react";
-
+import UpdateTrip from "./UpdateTrip";
 //styled components
 import {
   TripDetailTitle,
@@ -22,8 +22,12 @@ import { Spinner } from "native-base";
 //button
 import { Button } from "react-native";
 
-const TripDetails = ({ navigation, route }) => {
+// buttons
+import UpdateButton from "../buttons/UpdateButton";
+
+const TripDetails = ({ route }) => {
   const { trip } = route.params;
+
   if (tripStore.loading) return <Spinner />;
 
   return (
@@ -43,7 +47,11 @@ const TripDetails = ({ navigation, route }) => {
           title="delete"
           color="gray"
         ></Button>
-
+        {authStore.user.id === +trip.userId ? (
+          <UpdateButton oldTrip={trip} />
+        ) : (
+          <></>
+        )}
       </TripDetailWrapper>
     </>
   );
