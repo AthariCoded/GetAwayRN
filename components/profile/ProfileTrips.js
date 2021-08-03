@@ -15,7 +15,7 @@ import tripStore from "../../stores/tripStore";
 //observer
 import { observer } from "mobx-react";
 
-const ProfileTripList = ({ trips, navigation }) => {
+const ProfileTrip = ({ trips, navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
   const tripList = trips.map((trip) => <TripItem trip={trip} key={trip.id} navigation={navigation} />);
@@ -27,4 +27,4 @@ const ProfileTripList = ({ trips, navigation }) => {
   );
 };
 
-export default observer(ProfileTripList);
+export default observer(ProfileTrip);
