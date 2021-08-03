@@ -103,6 +103,9 @@ export default function MyTabs() {
       <Stack.Screen
         name="ProfileOwnerTrips"
         component={ProfileOwnerTrips}
+        options={{
+          title: "",
+        }}
       />
       <Stack.Screen
         name="TripDetails"
