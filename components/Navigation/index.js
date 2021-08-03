@@ -9,6 +9,7 @@ import TripList from "../trips/TripList";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TripDetail from "../trips/TripDetail";
 import ProfilePage from "../profile/ProfilePage";
+import ProfileOwnerTrips from "../profile/ProfileOwnerTrips";
 import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
 
@@ -97,6 +98,11 @@ export default function MyTabs() {
       <Stack.Screen
         name="ProfilePage"
         component={ProfilePage}
+      />
+
+      <Stack.Screen
+        name="ProfileOwnerTrips"
+        component={ProfileOwnerTrips}
       />
       <Stack.Screen
         name="TripDetails"

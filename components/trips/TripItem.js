@@ -21,8 +21,8 @@ const TripItem = ({ trip, navigation }) => {
 
   //fetch a profile object of trip owner
   const profileHandler = async () => {
-    await profileStore.fetchProfile(trip.userId);
-    navigation.navigate("ProfilePage", { profile: profileStore.profile });
+    const profile = await profileStore.profileByUserId(trip.userId);
+    navigation.navigate("ProfileOwnerTrips", { profile: profile });
   };
 
   return (
