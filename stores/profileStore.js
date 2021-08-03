@@ -1,5 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import authStore from "./authStore";
 import instance from "./instance";
 
 class ProfileStore {
@@ -48,19 +47,7 @@ class ProfileStore {
 
   profileByUserId = (userId) =>
     this.profiles.find((profile) => profile.userId === userId);
-
-  /*
-  fetchProfile = async (userId) => {
-    try {
-      const response = await instance.get(`/profiles/${userId}`);
-      this.profile = response.data;
-      this.loading = false;
-    } catch (error) {
-      console.error("fetchProfile", error);
-    }
-  };
-  */
-};
+}
 
 const profileStore = new ProfileStore();
 profileStore.fetchProfiles();

@@ -29,7 +29,7 @@ export const TripDetailImage = styled.Image`
 export const TripDetailTitle = styled.Text`
   font-weight: 400;
   font-size: 45px;
-  ${"" /* margin-bottom: 20px; */}
+  margin-bottom: -40px;
 `;
 
 export const TripItemTitle = styled.Text`
@@ -42,7 +42,6 @@ export const TripItemTitle = styled.Text`
 `;
 
 export const TripItemUsername = styled.Text`
-  ${"" /* align-self: flex-start; */}
   font-size: 13px;
   padding-top: 3px;
 `;
@@ -66,7 +65,7 @@ export const TripDetailsProfilePicture = styled.Image`
 
 export const TripDetailDetails = styled.Text`
   font-size: 20px;
-  margin-top: 20px;
+  ${"" /* margin-top: 20px; */}
 `;
 
 export const TripListItem = styled.View`
