@@ -3,6 +3,9 @@ import React from "react";
 //native-base
 import { List } from "native-base";
 
+//nav
+import { useNavigation } from "@react-navigation/native";
+
 //styled components
 import {
     TripItemTitle,
@@ -15,8 +18,11 @@ import {
 import { observer } from "mobx-react";
 
 const ProfileOwnerTripItem = ({ trip }) => {
+    const navigation = useNavigation();
     return (
-        <List.Item>
+        <List.Item
+            onPress={() => navigation.navigate("TripDetails", { trip: trip })}
+        >
             <TripListItem>
                 <TripDetailImage source={{ uri: trip.image }} />
                 <TripItemProfilePicture source={{ uri: trip.profilePicture }} />
