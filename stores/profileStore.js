@@ -21,14 +21,8 @@ class ProfileStore {
     }
   };
 
-  fetchUserProfile = async (profileId) => {
-    try {
-      const response = await instance.get(`/profiles/${profileId}`);
-      this.profile = response.data;
-      this.loading = false;
-    } catch (error) {
-      console.error("fetchProfile", error);
-    }
+  setUserProfile = (profile) => {
+    this.profile = profile;
   };
 
   ProfileUpdate = async (updatedProfile) => {
