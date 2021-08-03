@@ -14,11 +14,9 @@ import { ListWrapper } from "../trips/styles";
 
 import {
     ProfileTitle,
-    // ProfileLabels,
-    // SaveProfileButton,
-    //SaveProfileButtonText,
+    ProfileLabels,
     ProfilePicture,
-    //  ProfileTripsLabel,
+    ProfileTripsLabel,
 } from "./styles";
 
 //stores
@@ -50,10 +48,16 @@ const ProfileOwnerTrips = ({ route }) => {
                 <ProfilePicture
                     source={
                         profile.image
-                            ? { uri: profileStore.profile.image }
+                            ? { uri: profile.image }
                             : require("../../assets/images/defaultProfilePicture.png")
                     }
                 />
+                <ProfileLabels>bio: {profile.bio}</ProfileLabels>
+                <ProfileLabels style={{ marginBottom: 50 }}>
+                    {" "}
+                    Total Trips: {tripList.length}
+                </ProfileLabels>
+
                 <ListWrapper style={{ marginBottom: 90 }}>
                     <List>{tripList}</List>
                 </ListWrapper>
