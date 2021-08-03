@@ -37,7 +37,7 @@ const ProfilePage = () => {
   const [profile, setProfile] = useState({
     bio: profileStore.profile.bio ?? "",
     image: profileStore.profile.image ?? "",
-    id: authStore.user.profile,
+    id: authStore.user.profile.id,
   });
 
   const updateProfile = () => {
@@ -110,7 +110,14 @@ const ProfilePage = () => {
           []
         )}
 
-        {!isEditing ? <ProfileTrips trips={userTrips} navigation={navigation}></ProfileTrips> : []}
+        {!isEditing ? (
+          <ProfileTrips
+            trips={userTrips}
+            navigation={navigation}
+          ></ProfileTrips>
+        ) : (
+          []
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -148,4 +155,3 @@ const editStyles = StyleSheet.create({
   },
 });
 export default observer(ProfilePage);
-
