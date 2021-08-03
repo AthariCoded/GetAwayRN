@@ -3,6 +3,9 @@ import React from "react";
 //native-base
 import { List, Spinner } from "native-base";
 
+//react-native
+import { ScrollView } from "react-native";
+
 //components
 import ProfileOwnerTripItem from "../profile/ProfileOwnerTripItem";
 
@@ -27,9 +30,13 @@ const ProfileOwnerTrips = ({ route }) => {
     );
 
     return (
-        <ListWrapper style={{ marginBottom: 90 }}>
-            <List>{tripList}</List>
-        </ListWrapper>
+
+        <ScrollView>
+            <ListWrapper style={{ marginBottom: 90 }}>
+                <List>{tripList}</List>
+            </ListWrapper>
+        </ScrollView>
+
     );
 };
 
