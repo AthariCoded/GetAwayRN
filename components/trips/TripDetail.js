@@ -57,18 +57,12 @@ const TripDetails = ({ route }) => {
         {/* <TripItemUsername>{trip.user}</TripItemUsername> */}
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
-        {/*
-        <Button
-          onPress={() => tripStore.tripDelete(trip.id)}
-          title="delete"
-          color="gray"
-        ></Button>
         {authStore.user.id === +trip.userId ? (
           <UpdateButton oldTrip={trip} />
         ) : (
           <></>
         )}
-        */}
+
         {(authStore.user.id === trip.userId) && (
           <Button
             onPress={submitHandler}
