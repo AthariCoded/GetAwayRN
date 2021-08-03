@@ -109,7 +109,7 @@ const ProfilePage = () => {
           []
         )}
 
-        {!isEditing ? <ProfileTrips trips={userTrips}></ProfileTrips> : []}
+        {!isEditing ? <ProfileTrips trips={userTrips} navigation={navigation}></ProfileTrips> : []}
       </ScrollView>
     </SafeAreaView>
   );

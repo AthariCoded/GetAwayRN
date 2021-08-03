@@ -15,10 +15,10 @@ import tripStore from "../../stores/tripStore";
 //observer
 import { observer } from "mobx-react";
 
-const TripList = ({ trips }) => {
+const ProfileTripList = ({ trips, navigation }) => {
   if (tripStore.loading) return <Spinner />;
 
-  const tripList = trips.map((trip) => <TripItem trip={trip} key={trip.id} />);
+  const tripList = trips.map((trip) => <TripItem trip={trip} key={trip.id} navigation={navigation} />);
 
   return (
     <ListWrapper style={{ marginBottom: 90 }}>
@@ -27,4 +27,4 @@ const TripList = ({ trips }) => {
   );
 };
 
-export default observer(TripList);
+export default observer(ProfileTripList);

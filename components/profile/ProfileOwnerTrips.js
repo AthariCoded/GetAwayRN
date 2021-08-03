@@ -16,7 +16,6 @@ import {
     ProfileTitle,
     ProfileLabels,
     ProfilePicture,
-    ProfileTripsLabel,
 } from "./styles";
 
 //stores
