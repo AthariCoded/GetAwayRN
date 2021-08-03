@@ -1,10 +1,14 @@
 import { observer } from "mobx-react";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //stores
 import authStore from "../../stores/authStore";
 import tripStore from "../../stores/tripStore";
+//---------
+import { Button, Image, View, Platform } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+//------------
 
 //nav
 import { useNavigation } from "@react-navigation/native";
@@ -45,6 +49,7 @@ const AddTrip = () => {
       { cancelable: false }
     );
   }
+
   return (
     <SafeAreaView>
       <AddTripTitle> Add New Trip</AddTripTitle>
@@ -68,9 +73,12 @@ const AddTrip = () => {
         onChangeText={(image) => setTrip({ ...trip, image })}
         placeholder="Trip Image Adress"
       />
+
       <AddTripButton onPress={handleAddTrip}>
         <AddTripButtonText>Add</AddTripButtonText>
       </AddTripButton>
+
+
     </SafeAreaView>
   );
 };

@@ -6,7 +6,7 @@ import { useState, Spinner } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 //components
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
 import {
   ProfileTitle,
   ProfileLabels,
@@ -101,6 +101,12 @@ const ProfilePage = () => {
               onChangeText={(image) => setProfile({ ...profile, image })}
               placeholder="Trip Image Adress"
             />
+            {/* --------- */}
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <Button title="Pick an image from camera roll" onPress={pickImage} />
+              {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+            </View>
+            {/* --------- */}
             <SaveProfileButton onPress={() => updateProfile()}>
               <SaveProfileButtonText>Save changes</SaveProfileButtonText>
             </SaveProfileButton>
