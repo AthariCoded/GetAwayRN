@@ -4,13 +4,22 @@ import React from "react";
 import { List, Spinner } from "native-base";
 
 //react-native
-import { ScrollView } from "react-native";
+import { ScrollView, SafeAreaView } from "react-native";
 
 //components
 import ProfileOwnerTripItem from "../profile/ProfileOwnerTripItem";
 
 //styles
 import { ListWrapper } from "../trips/styles";
+
+import {
+    ProfileTitle,
+    // ProfileLabels,
+    // SaveProfileButton,
+    //SaveProfileButtonText,
+    ProfilePicture,
+    //  ProfileTripsLabel,
+} from "./styles";
 
 //stores
 import tripStore from "../../stores/tripStore";
@@ -29,13 +38,27 @@ const ProfileOwnerTrips = ({ route }) => {
         (trip) => <ProfileOwnerTripItem trip={trip} key={trip.id} />
     );
 
-    return (
+    const username = tripStore.trips.find(
+        (trip) => trip.userId === profile.userId).user.username;
 
-        <ScrollView>
-            <ListWrapper style={{ marginBottom: 90 }}>
-                <List>{tripList}</List>
-            </ListWrapper>
-        </ScrollView>
+    return (
+        <SafeAreaView>
+            <ScrollView>
+                <ProfileTitle>
+                    {username}
+                </ProfileTitle>
+                <ProfilePicture
+                    source={
+                        profile.image
+                            ? { uri: profileStore.profile.image }
+                            : require("../../assets/images/defaultProfilePicture.png")
+                    }
+                />
+                <ListWrapper style={{ marginBottom: 90 }}>
+                    <List>{tripList}</List>
+                </ListWrapper>
+            </ScrollView>
+        </SafeAreaView>
 
     );
 };
