@@ -4,7 +4,8 @@ import { useState } from "react";
 //stores
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
-
+//components
+import QBoxList from "../qbox/QBoxList";
 //icons
 import { AntDesign } from "@expo/vector-icons";
 
@@ -97,6 +98,9 @@ const TripDetails = ({ route }) => {
         {authStore.user.id === trip.userId && (
           <Button onPress={submitHandler} title="delete" color="red"></Button>
         )}
+
+        <QBoxList trip={trip} />
+
       </TripDetailWrapper>
     </>
   );
