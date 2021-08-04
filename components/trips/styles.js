@@ -38,6 +38,7 @@ export const TripItemTitle = styled.Text`
   font-weight: bold;
   margin: 10px;
   margin-bottom: -10px;
+  margin-left: -35px;
   text-align: center;
 `;
 
@@ -68,6 +69,11 @@ export const TripDetailDetails = styled.Text`
   ${"" /* margin-top: 20px; */}
 `;
 
+export const TripDetailLocation = styled.Text`
+  font-size: 20px;
+  margin-top: 40px;
+`;
+
 export const TripListItem = styled.View`
   flex-direction: row;
   ${"" /* justify-content: center; */}
@@ -81,6 +87,7 @@ export const AddTripTitle = styled.Text`
   font-size: 30px;
   margin: 20px;
   margin-left: 10px;
+  margin-top: 90px;
 `;
 
 export const AddTripLabels = styled.Text`

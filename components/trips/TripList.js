@@ -25,9 +25,7 @@ const TripList = ({ navigation }) => {
   if (authStore.user)
     trips = trips.filter((trip) => trip.userId !== authStore.user.id);
   const tripList = trips.map((trip) => (
-
     <TripItem trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
-
   ));
 
   return (
