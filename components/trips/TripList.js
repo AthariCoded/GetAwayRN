@@ -6,7 +6,7 @@ import { List, Spinner } from "native-base";
 //components
 import { ScrollView } from "react-native";
 import TripItem from "./TripItem";
-
+import Signout from "../authentication/Signout";
 //styles
 import { ListWrapper, HomeLogo, HomeImage } from "./styles";
 
@@ -25,15 +25,14 @@ const TripList = ({ navigation }) => {
   if (authStore.user)
     trips = trips.filter((trip) => trip.userId !== authStore.user.id);
   const tripList = trips.map((trip) => (
-
     <TripItem trip={trip} key={trip.id} navigation={navigation} /> //navigation={navigation}
-
   ));
 
   return (
     <>
       <HomeLogo>
         <HomeImage source={require("../../assets/images/GetawayLogo.png")} />
+        <Signout />
       </HomeLogo>
       <ScrollView>
         <ListWrapper>
