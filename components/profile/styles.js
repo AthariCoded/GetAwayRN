@@ -23,6 +23,14 @@ export const ProfileLabels = styled.Text`
   margin-left: 15px;
 `;
 
+export const ProfileMapLabel = styled.Text`
+  font-weight: 300;
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: ${(props) => props.theme.lightColor};
+`;
+
 export const SaveProfileButton = styled.TouchableOpacity`
   align-self: stretch;
   align-items: center;

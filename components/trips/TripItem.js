@@ -43,9 +43,7 @@ const TripItem = ({ trip, navigation }) => {
             []
           )}
         </TripItemTitle>
-        <TripItemUsername onPress={profileHandler}>
-          in {trip.locationTitle}
-        </TripItemUsername>
+        <TripItemUsername>{trip.locationTitle}</TripItemUsername>
         <TripItemUsername onPress={profileHandler}>
           {" "}
           by {trip.user.username}
