@@ -15,7 +15,7 @@ const GooglePlacesInput = ({ updateLocation }) => {
         });
       }}
       query={{
-        key: "AIzaSyB3K-IjZaFxVVBykp7ECaBQ38I6sd9IgpE",
+        key: "",
         language: "en",
       }}
     />
