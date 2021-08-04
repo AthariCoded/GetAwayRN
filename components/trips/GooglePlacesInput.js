@@ -5,13 +5,17 @@ const GooglePlacesInput = ({ updateLocation }) => {
   return (
     <GooglePlacesAutocomplete
       placeholder="Search Location"
+      fetchDetails
       onPress={(data, details = null) => {
-        const place_id = data.place_id;
         const locationTitle = data.description;
-        updateLocation({ place_id: place_id, locationTitle: locationTitle });
+        updateLocation({
+          locationLng: details.geometry.location.lng,
+          locationLat: details.geometry.location.lat,
+          locationTitle: locationTitle,
+        });
       }}
       query={{
-        key: "AIzaSyB3K-IjZaFxVVBykp7ECaBQ38I6sd9IgpE",
+        key: "",
         language: "en",
       }}
     />
