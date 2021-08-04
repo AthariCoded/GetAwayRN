@@ -20,6 +20,7 @@ import {
   TripDetailDetails,
   TripDetailsProfilePicture,
   TripItemUsername,
+  TripDetailLocation,
 } from "./styles";
 
 //native-base
@@ -61,6 +62,7 @@ const TripDetails = ({ route }) => {
       <TripDetailWrapper>
         <TripDetailImage source={{ uri: trip.image }} />
         <TripDetailTitle>{trip.title}</TripDetailTitle>
+        <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
         <TripDetailsProfilePicture
           className="details"
           source={{ uri: trip.profilePicture }}
