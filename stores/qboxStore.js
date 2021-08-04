@@ -20,11 +20,11 @@ class QBoxStore {
         }
     };
 
-    qboxAdd = async (newQBox, navigation) => {
+    qboxAdd = async (newQBox, tripId) => {
         try {
-            await instance.post(`/qbox/${newQBox.id}`);
+            await instance.post(`/qbox/${tripId}`, newQBox);
             this.fetchQBoxes();
-            navigation.navigate("Explore");
+            // navigation.navigate("Explore");
         } catch (error) {
             console.error(error);
         }

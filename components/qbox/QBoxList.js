@@ -4,12 +4,9 @@ import React from "react";
 import { List, Spinner } from "native-base";
 
 //components
-import { ScrollView } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import QBoxItem from "./QBoxItem";
 import QBoxAdd from "./QBoxAdd";
-
-//styles
-import { QBoxTitle, QBoxLogo } from "./styles";
 
 //stores
 import qboxStore from "../../stores/qboxStore";
@@ -32,15 +29,20 @@ const QBoxList = ({ trip }) => {
 
     return (
         <>
-            <QBoxLogo>
-                <QBoxTitle>Q and A:</QBoxTitle>
-            </QBoxLogo>
-            {/* <QBoxAdd /> */}
-            <ScrollView>
-                <List>{qboxList}</List>
-            </ScrollView>
+            <QBoxAdd trip={trip} />
+            <View style={styles.questionBox}>{qboxList}</View>
         </>
     );
 };
 
 export default observer(QBoxList);
+
+const styles = StyleSheet.create({
+    questionBox: {
+        alignItems: "center",
+        backgroundColor: "white",
+        marginBottom: 10,
+        paddingHorizontal: 70,
+
+    },
+});
