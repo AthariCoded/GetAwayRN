@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const ListWrapper = styled.View`
-  margin-left: -8.5;
+  margin-left: -8.5px;
   margin-top: -15px;
 `;
 

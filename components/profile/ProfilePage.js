@@ -6,7 +6,7 @@ import { useState, Spinner } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 //components
-import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
+import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 import {
   ProfileTitle,
   ProfileLabels,
@@ -14,11 +14,13 @@ import {
   SaveProfileButtonText,
   ProfilePicture,
   ProfileTripsLabel,
+  ProfileMapLabel,
 } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from "native-base";
 import ProfileTrips from "./ProfileTrips";
 import { ScrollView } from "react-native";
+import ProfileMap from "../map/ProfileMap";
 
 //store
 import authStore from "../../stores/authStore";
@@ -90,7 +92,6 @@ const ProfilePage = () => {
           editable={isEditing ? true : false}
           value={profile.bio}
         />
-
         {isEditing ? (
           <>
             <ProfileLabels>Profile Image Address</ProfileLabels>
@@ -107,7 +108,12 @@ const ProfilePage = () => {
             </SaveProfileButton>
           </>
         ) : (
-          []
+          <>
+            <ProfileMapLabel>
+              See where {authStore.user.username} has been
+            </ProfileMapLabel>
+            <ProfileMap trips={userTrips}></ProfileMap>
+          </>
         )}
 
         {!isEditing ? (
