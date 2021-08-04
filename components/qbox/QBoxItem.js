@@ -10,7 +10,7 @@ import { observer } from "mobx-react";
 const QBoxItem = ({ qbox }) => {
     return (
         <View>
-            <Text> Q: {qbox.question}</Text>
+            <Text> Q: {qbox.question} by: {qbox.author} </Text>
             <Text> A: {qbox.answer}</Text>
         </View>
     )
