@@ -25,8 +25,7 @@ const QBoxAdd = ({ trip }) => {
     return (
         <View>
             {authStore.user.id !== trip.userId && (
-                <View>
-                    <Text style={styles.qTitle}>Add a question </Text>
+                <View style={styles.container}>
                     <TextInput
                         style={styles.input}
                         onChangeText={(question) => setQues({ ...ques, question })}
@@ -45,17 +44,17 @@ const QBoxAdd = ({ trip }) => {
 export default observer(QBoxAdd);
 
 const styles = StyleSheet.create({
+    container: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: 5,
+    },
     input: {
         borderWidth: 1,
         borderColor: "#777",
         padding: 10,
         margin: 5,
-        width: 200,
-    },
-    qTitle: {
-        color: "#777",
-        paddingTop: 10,
-        marginTop: 5,
         width: 200,
     },
 });

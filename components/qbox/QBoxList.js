@@ -1,10 +1,10 @@
 import React from "react";
 
 //native-base
-import { List, Spinner } from "native-base";
+import { Spinner } from "native-base";
 
 //components
-import { ScrollView, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import QBoxItem from "./QBoxItem";
 import QBoxAdd from "./QBoxAdd";
 
@@ -23,7 +23,7 @@ const QBoxList = ({ trip }) => {
     qboxes = qboxes.filter((qbox) => qbox.tripId === trip.id);
     const qboxList = qboxes.map((qbox) => (
 
-        <QBoxItem qbox={qbox} key={qbox.id} /> //navigation={navigation}
+        <QBoxItem qbox={qbox} key={qbox.id} />
 
     ));
 
@@ -39,10 +39,10 @@ export default observer(QBoxList);
 
 const styles = StyleSheet.create({
     questionBox: {
-        alignItems: "center",
         backgroundColor: "white",
-        marginBottom: 10,
-        paddingHorizontal: 70,
-
+        marginBottom: 40,
+        paddingHorizontal: 30,
+        flex: 1,
+        textAlign: "left",
     },
 });
