@@ -68,10 +68,10 @@ const TripDetails = ({ route }) => {
           <TripItemUsername>by: {trip.user.username}</TripItemUsername>
           <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
 
-          <TripDetailsProfilePicture
+          {/* <TripDetailsProfilePicture
             className="details"
             source={{ uri: trip.profilePicture }}
-          />
+          /> */}
 
           {authStore.user.id === +trip.userId ? (
             <NativeButton

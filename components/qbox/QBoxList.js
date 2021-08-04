@@ -6,6 +6,7 @@ import { List, Spinner } from "native-base";
 //components
 import { ScrollView } from "react-native";
 import QBoxItem from "./QBoxItem";
+import QBoxAdd from "./QBoxAdd";
 
 //styles
 import { QBoxTitle, QBoxLogo } from "./styles";
@@ -34,6 +35,7 @@ const QBoxList = ({ trip }) => {
             <QBoxLogo>
                 <QBoxTitle>Q and A:</QBoxTitle>
             </QBoxLogo>
+            {/* <QBoxAdd /> */}
             <ScrollView>
                 <List>{qboxList}</List>
             </ScrollView>

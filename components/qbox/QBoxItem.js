@@ -4,12 +4,6 @@ import React from "react";
 //import { List } from "native-base";
 import { Text, View, } from "react-native";
 
-//styled components
-import {
-    TripItemTitle,
-    TripListItem,
-} from "./styles";
-
 //observer
 import { observer } from "mobx-react";
 
