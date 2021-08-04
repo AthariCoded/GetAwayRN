@@ -31,6 +31,8 @@ const pickImage = async () => {
         setImage(result.uri);
     }
 };
+
+// this probably doesn't work. There's a red underline here.
 return (
     <Button title="Pick an image from camera roll" onPress={pickImage} />
     { image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} /> }

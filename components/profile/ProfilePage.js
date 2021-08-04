@@ -75,10 +75,7 @@ const ProfilePage = () => {
         {isEditing ? (
           <ProfileLabels>bio</ProfileLabels>
         ) : (
-          <ProfileTripsLabel>
-            {" "}
-            Total Trips: {userTrips.length}
-          </ProfileTripsLabel>
+          <ProfileTripsLabel>Total Trips: {userTrips.length}</ProfileTripsLabel>
         )}
         <TextInput
           style={isEditing ? editStyles.input : styles.input}
@@ -110,6 +107,7 @@ const ProfilePage = () => {
           []
         )}
 
+        {/* In conditions like this, use && like I mentioned in the other file. */}
         {!isEditing ? (
           <ProfileTrips
             trips={userTrips}

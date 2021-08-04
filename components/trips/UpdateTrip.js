@@ -28,7 +28,7 @@ const UpdateTrip = ({ route }) => {
     navigation.navigate("Explore");
   };
 
-  //   console.log("user", authStore.user);
+  //   console.log("user", authStore.user); remove this line
   if (authStore.user) {
   } else {
     Alert.alert(
@@ -44,7 +44,7 @@ const UpdateTrip = ({ route }) => {
       { cancelable: false }
     );
   }
-  //   console.log("trip", trip);
+  //   console.log("trip", trip); this line also
 
   return (
     <SafeAreaView>

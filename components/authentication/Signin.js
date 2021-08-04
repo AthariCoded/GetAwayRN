@@ -23,6 +23,7 @@ const Signin = ({ navigation }) => {
 
   const handleSubmit = async () => {
     await authStore.signin(user, navigation);
+    // remove commented code you're not using
     // if (authStore.user) navigation.replace("Explore");
   };
 

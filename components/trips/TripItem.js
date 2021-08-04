@@ -36,7 +36,7 @@ const TripItem = ({ trip, navigation }) => {
         <TripDetailImage source={{ uri: trip.image }} />
         <TripItemProfilePicture source={{ uri: trip.profilePicture }} />
         <TripItemTitle>
-          {trip.title}{" "}
+          {trip.title}
           {trip.favorite ? (
             <AntDesign name="heart" size={18} color="#ED3293" />
           ) : (
@@ -47,7 +47,6 @@ const TripItem = ({ trip, navigation }) => {
           in {trip.locationTitle}
         </TripItemUsername>
         <TripItemUsername onPress={profileHandler}>
-          {" "}
           by {trip.user.username}
         </TripItemUsername>
       </TripListItem>

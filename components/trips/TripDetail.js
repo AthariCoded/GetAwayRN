@@ -73,6 +73,8 @@ const TripDetails = ({ route }) => {
             style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
             onPress={() => toggleFavorite()}
           >
+            {/* Since these two lines are the same except the "o", put the condition only on this "o"
+          You'll have to use `` and ${} for the condition within the string */}
             {favorite ? (
               <AntDesign name="heart" size={24} color="#ED3293" />
             ) : (
@@ -91,6 +93,7 @@ const TripDetails = ({ route }) => {
 
         <TripDetailDetails>{trip.description}</TripDetailDetails>
 
+        {/* use && everywhere you have this kind of condition where the else is left empty */}
         {authStore.user.id === +trip.userId ? (
           <UpdateButton oldTrip={trip} />
         ) : (
@@ -102,7 +105,6 @@ const TripDetails = ({ route }) => {
         )}
 
         <QBoxList trip={trip} />
-
       </TripDetailWrapper>
     </>
   );

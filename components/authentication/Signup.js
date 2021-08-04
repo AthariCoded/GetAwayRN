@@ -43,6 +43,11 @@ const Signup = ({ navigation }) => {
       <AuthOther onPress={() => navigation.navigate("Signin")}>
         Click here to sign in
       </AuthOther>
+      {/* 
+        You can use this condition instead:
+        {authStore.user && <Button ...>...</Button>}
+        Does the same thing, simpler code.
+       */}
       {authStore.user ? (
         <Button onPress={authStore.signout}>
           <Text>Signout</Text>
