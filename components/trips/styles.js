@@ -45,6 +45,7 @@ export const TripItemTitle = styled.Text`
 export const TripItemUsername = styled.Text`
   font-size: 13px;
   padding-top: 3px;
+  margin-top: 40px;
 `;
 
 export const TripItemProfilePicture = styled.Image`

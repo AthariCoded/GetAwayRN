@@ -12,6 +12,7 @@ import {
     TripListItem,
     TripDetailImage,
     TripItemProfilePicture,
+    TripItemUsername,
 } from "../trips/styles";
 
 //observer
@@ -27,7 +28,7 @@ const ProfileOwnerTripItem = ({ trip }) => {
                 <TripDetailImage source={{ uri: trip.image }} />
                 <TripItemProfilePicture source={{ uri: trip.profilePicture }} />
                 <TripItemTitle>{trip.title}</TripItemTitle>
-                {/* <TripItemUsername>by {trip.user}</TripItemUsername> */}
+                <TripItemUsername>by {trip.user.username}</TripItemUsername>
             </TripListItem>
         </List.Item>
     );

@@ -6,6 +6,7 @@ import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
 //components
 import QBoxList from "../qbox/QBoxList";
+import { ScrollView } from "react-native";
 //icons
 import { AntDesign } from "@expo/vector-icons";
 
@@ -59,51 +60,56 @@ const TripDetails = ({ route }) => {
 
   return (
     <>
-      <TripDetailWrapper>
-        <TripDetailImage source={{ uri: trip.image }} />
-        <TripDetailTitle>{trip.title}</TripDetailTitle>
-        <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
-        <TripDetailsProfilePicture
-          className="details"
-          source={{ uri: trip.profilePicture }}
-        />
+      <ScrollView>
+        <TripDetailWrapper>
 
-        {authStore.user.id === +trip.userId ? (
-          <NativeButton
-            style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
-            onPress={() => toggleFavorite()}
-          >
-            {favorite ? (
-              <AntDesign name="heart" size={24} color="#ED3293" />
-            ) : (
-              <AntDesign name="hearto" size={24} color="#ED3293" />
-            )}
-          </NativeButton>
-        ) : (
-          <>
-            {favorite ? (
-              <AntDesign name="heart" size={24} color="#ED3293" />
-            ) : (
-              []
-            )}
-          </>
-        )}
+          <TripDetailImage source={{ uri: trip.image }} />
+          <TripDetailTitle>{trip.title}</TripDetailTitle>
+          <TripItemUsername>by: {trip.user.username}</TripItemUsername>
+          <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
 
-        <TripDetailDetails>{trip.description}</TripDetailDetails>
+          <TripDetailsProfilePicture
+            className="details"
+            source={{ uri: trip.profilePicture }}
+          />
 
-        {authStore.user.id === +trip.userId ? (
-          <UpdateButton oldTrip={trip} />
-        ) : (
-          <></>
-        )}
+          {authStore.user.id === +trip.userId ? (
+            <NativeButton
+              style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
+              onPress={() => toggleFavorite()}
+            >
+              {favorite ? (
+                <AntDesign name="heart" size={24} color="#ED3293" />
+              ) : (
+                <AntDesign name="hearto" size={24} color="#ED3293" />
+              )}
+            </NativeButton>
+          ) : (
+            <>
+              {favorite ? (
+                <AntDesign name="heart" size={24} color="#ED3293" />
+              ) : (
+                []
+              )}
+            </>
+          )}
 
-        {authStore.user.id === trip.userId && (
-          <Button onPress={submitHandler} title="delete" color="red"></Button>
-        )}
+          <TripDetailDetails>{trip.description}</TripDetailDetails>
 
-        <QBoxList trip={trip} />
+          {authStore.user.id === +trip.userId ? (
+            <UpdateButton oldTrip={trip} />
+          ) : (
+            <></>
+          )}
 
-      </TripDetailWrapper>
+          {authStore.user.id === trip.userId && (
+            <Button onPress={submitHandler} title="delete" color="red"></Button>
+          )}
+
+          <QBoxList trip={trip} />
+
+        </TripDetailWrapper>
+      </ScrollView>
     </>
   );
 };
