@@ -1,33 +1,46 @@
 import * as React from "react";
 import MapView, { Marker } from "react-native-maps";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { observer } from "mobx-react";
 
-export default function App({ trips }) {
+const ProfileMap = ({ trips }) => {
   return (
     <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        region={{
-          latitude: +trips[0].locationLat,
-          longitude: +trips[0].locationLng,
-          latitudeDelta: 0.0922 * 1500,
-          longitudeDelta: 0.0421 * 1500,
-        }}
-      >
-        {trips.map((trip) => (
-          <Marker
-            coordinate={{
-              latitude: +trip.locationLat,
-              longitude: +trip.locationLng,
-            }}
-            title={trip.title}
-            key={trip.id}
-          ></Marker>
-        ))}
-      </MapView>
+      {trips ? (
+        <MapView
+          style={styles.map}
+          region={{
+            latitude: +trips[0].locationLat,
+            longitude: +trips[0].locationLng,
+            latitudeDelta: 0.0922 * 1500,
+            longitudeDelta: 0.0421 * 1500,
+          }}
+        >
+          {trips.map((trip) => (
+            <Marker
+              coordinate={{
+                latitude: +trip.locationLat,
+                longitude: +trip.locationLng,
+              }}
+              title={trip.title}
+              key={trip.id}
+            ></Marker>
+          ))}
+        </MapView>
+      ) : (
+        <MapView
+          style={styles.map}
+          region={{
+            latitude: 29.3378,
+            longitude: -48.0235,
+            latitudeDelta: 0.0922 * 1500,
+            longitudeDelta: 0.0421 * 1500,
+          }}
+        ></MapView>
+      )}
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -42,3 +55,5 @@ const styles = StyleSheet.create({
     height: 200,
   },
 });
+
+export default observer(ProfileMap);

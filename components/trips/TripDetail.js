@@ -62,7 +62,6 @@ const TripDetails = ({ route }) => {
     <>
       <ScrollView>
         <TripDetailWrapper>
-
           <TripDetailImage source={{ uri: trip.image }} />
           <TripDetailTitle>{trip.title}</TripDetailTitle>
           <TripItemUsername>by: {trip.user.username}</TripItemUsername>
@@ -107,7 +106,6 @@ const TripDetails = ({ route }) => {
           )}
 
           <QBoxList trip={trip} />
-
         </TripDetailWrapper>
       </ScrollView>
     </>

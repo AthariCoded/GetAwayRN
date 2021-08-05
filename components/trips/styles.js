@@ -38,14 +38,20 @@ export const TripItemTitle = styled.Text`
   font-weight: bold;
   margin: 10px;
   margin-bottom: -10px;
-  margin-left: -35px;
+  margin-left: -40px;
   text-align: center;
 `;
 
 export const TripItemUsername = styled.Text`
   font-size: 13px;
   padding-top: 3px;
-  margin-top: 40px;
+  margin-top: 25px;
+`;
+
+export const TripDetailUsername = styled.Text`
+  font-size: 15px;
+  padding-top: 10px;
+  margin-top: 25px;
 `;
 
 export const TripItemProfilePicture = styled.Image`
