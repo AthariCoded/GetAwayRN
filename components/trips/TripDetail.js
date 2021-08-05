@@ -78,9 +78,6 @@ const TripDetails = ({ route }) => {
           <TripDetailImage source={{ uri: trip.image }} />
           <TripDetailTitle>{trip.title}</TripDetailTitle>
           <TripDetailUsername>by: {trip.user.username}</TripDetailUsername>
-          <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
-          <TripDetailDetails>{trip.description}</TripDetailDetails>
-
           {authStore.user.id === +trip.userId ? (
             <NativeButton
               style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
@@ -101,6 +98,11 @@ const TripDetails = ({ route }) => {
               )}
             </>
           )}
+          <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
+          <TripDetailDetails>{trip.description}</TripDetailDetails>
+
+          <QBoxList trip={trip} />
+          {authStore.user.id === trip.userId && <QBoxAnswerList trip={trip} />}
 
           {authStore.user.id === +trip.userId ? (
             <UpdateButton oldTrip={trip} />
@@ -108,10 +110,8 @@ const TripDetails = ({ route }) => {
             <></>
           )}
           {trip.userId !== authStore.user.id &&
-
           !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
             <WishButtonStyling onPress={handleAdd} style={{ margin: 20 }}>
-
               <Text>Want To Go!</Text>
             </WishButtonStyling>
           ) : (
@@ -124,11 +124,6 @@ const TripDetails = ({ route }) => {
               color="red"
               style={{ fontSize: 18 }}
             ></Button>
-          )}
-
-          <QBoxList trip={trip} />
-          {authStore.user.id === trip.userId && (
-            <QBoxAnswerList trip={trip} />
           )}
         </TripDetailWrapper>
       </ScrollView>
