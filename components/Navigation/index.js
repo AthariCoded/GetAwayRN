@@ -121,7 +121,6 @@ export default function MyTabs() {
 
           return {
             title: trip.title,
-            headerRight: () => <WishButton />,
           };
         }}
       />
@@ -132,7 +131,13 @@ export default function MyTabs() {
           headerShown: false,
         }}
       />
-      <Stack.Screen name="WishList" component={WishList} />
+      <Stack.Screen
+        name="WishList"
+        component={WishList}
+        options={{
+          title: "Want to go",
+        }}
+      />
     </Stack.Navigator>
   );
 }

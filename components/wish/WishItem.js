@@ -8,11 +8,14 @@ import { AntDesignIcon } from "./styles";
 const WishItem = ({ wish }) => {
   return (
     <List>
-      <Text>{wish.title}</Text>
+      <Text style={{ fontSize: 18, paddingTop: 15, justifyContent: "center" }}>
+        {wish.title}
+      </Text>
       <AntDesignIcon
         name="minuscircleo"
-        size={24}
+        size={18}
         onPress={() => wishStore.deleteFromWish(wish.id)}
+        style={{ alignSelf: "flex-end", marginTop: -20, marginBottom: 15 }}
       />
     </List>
   );
