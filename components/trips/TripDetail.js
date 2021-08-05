@@ -24,12 +24,10 @@ import {
   TripDetailWrapper,
   TripDetailDetails,
   TripDetailsProfilePicture,
+  TripDetailUsername,
   TripItemUsername,
-
   WishButtonStyling,
-
   TripDetailLocation,
-
 } from "./styles";
 
 //native-base
@@ -80,13 +78,16 @@ const TripDetails = ({ route }) => {
 
       <ScrollView>
         <TripDetailWrapper>
-
           <TripDetailImage source={{ uri: trip.image }} />
           <TripDetailTitle>{trip.title}</TripDetailTitle>
-          <TripItemUsername>by: {trip.user.username}</TripItemUsername>
+          <TripDetailUsername>by: {trip.user.username}</TripDetailUsername>
           <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
+          <TripDetailDetails>{trip.description}</TripDetailDetails>
+          <TripDetailsProfilePicture
+
 
           {/* <TripDetailsProfilePicture
+
             className="details"
             source={{ uri: trip.profilePicture }}
           /> */}
@@ -112,8 +113,6 @@ const TripDetails = ({ route }) => {
             </>
           )}
 
-          <TripDetailDetails>{trip.description}</TripDetailDetails>
-
           {authStore.user.id === +trip.userId ? (
             <UpdateButton oldTrip={trip} />
           ) : (
@@ -128,11 +127,15 @@ const TripDetails = ({ route }) => {
           <></>
         )}
           {authStore.user.id === trip.userId && (
-            <Button onPress={submitHandler} title="delete" color="red"></Button>
+            <Button
+              onPress={submitHandler}
+              title="delete trip"
+              color="red"
+              style={{ fontSize: 18 }}
+            ></Button>
           )}
 
           <QBoxList trip={trip} />
-
         </TripDetailWrapper>
       </ScrollView>
 

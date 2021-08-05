@@ -1,4 +1,5 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
+import authStore from "./authStore";
 import instance from "./instance";
 
 class TripStore {
@@ -61,8 +62,10 @@ class TripStore {
   tripFavoriteUpdate = async (updatedTrip) => {
     try {
       await instance.put(`/trips/fav/${updatedTrip.id}`);
-      const foundTrip = this.trips.find((trip) => trip.id === updatedTrip.id);
-      foundTrip["favorite"] = !foundTrip["favorite"];
+      runInAction(() => {
+        const foundTrip = this.trips.find((trip) => trip.id === updatedTrip.id);
+        foundTrip["favorite"] = !foundTrip["favorite"];
+      });
     } catch (error) {
       console.error(error);
     }

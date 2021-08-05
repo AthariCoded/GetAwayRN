@@ -50,6 +50,7 @@ const AddTrip = () => {
         {
           text: "Cancel",
           style: "cancel",
+          onPress: () => navigation.navigate("Explore"),
         },
         { text: "Sign in", onPress: () => navigation.navigate("Signin") },
       ],
