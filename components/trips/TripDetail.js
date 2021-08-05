@@ -108,7 +108,7 @@ const TripDetails = ({ route }) => {
           )}
           {trip.userId !== authStore.user.id &&
           !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
-            <WishButtonStyling onPress={handleAdd}>
+            <WishButtonStyling onPress={handleAdd} style={{ margin: 20 }}>
               <Text>Want To Go!</Text>
             </WishButtonStyling>
           ) : (
