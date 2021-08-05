@@ -15,7 +15,7 @@ const UpdateButton = ({ oldTrip }) => {
 
   return (
     <>
-      <UpdateButtonStyle onPress={handlePress}>Update</UpdateButtonStyle>
+      <UpdateButtonStyle onPress={handlePress}>Update trip</UpdateButtonStyle>
     </>
   );
 };
