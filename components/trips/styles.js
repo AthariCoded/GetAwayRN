@@ -73,12 +73,11 @@ export const TripDetailsProfilePicture = styled.Image`
 
 export const TripDetailDetails = styled.Text`
   font-size: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 `;
 
 export const TripDetailLocation = styled.Text`
   font-size: 20px;
-  margin-top: 40px;
 `;
 
 export const TripListItem = styled.View`

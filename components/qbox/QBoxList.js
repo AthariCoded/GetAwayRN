@@ -15,34 +15,34 @@ import qboxStore from "../../stores/qboxStore";
 import { observer } from "mobx-react";
 
 const QBoxList = ({ trip }) => {
-    if (qboxStore.loading) return <Spinner />;
+  if (qboxStore.loading) return <Spinner />;
 
-    //change later
-    let qboxes = qboxStore.qboxes;
+  //change later
+  let qboxes = qboxStore.qboxes;
 
-    qboxes = qboxes.filter((qbox) => qbox.tripId === trip.id);
-    const qboxList = qboxes.map((qbox) => (
+  qboxes = qboxes.filter((qbox) => qbox.tripId === trip.id);
+  const qboxList = qboxes.map((qbox) => <QBoxItem qbox={qbox} key={qbox.id} />);
 
-        <QBoxItem qbox={qbox} key={qbox.id} />
-
-    ));
-
-    return (
-        <>
-            <QBoxAdd trip={trip} />
-            <View style={styles.questionBox}>{qboxList}</View>
-        </>
-    );
+  return (
+    <>
+      <QBoxAdd trip={trip} />
+      <View style={styles.questionBox}>{qboxList}</View>
+    </>
+  );
 };
 
 export default observer(QBoxList);
 
 const styles = StyleSheet.create({
-    questionBox: {
-        backgroundColor: "white",
-        marginBottom: 40,
-        paddingHorizontal: 30,
-        flex: 1,
-        textAlign: "left",
-    },
+  questionBox: {
+    backgroundColor: "rgba(52, 52, 52, 0)",
+    // marginBottom: 40,
+    paddingTop: 10,
+    marginTop: 30,
+    paddingBottom: 10,
+    paddingHorizontal: 10,
+    flex: 1,
+    textAlign: "left",
+    alignSelf: "stretch",
+  },
 });
