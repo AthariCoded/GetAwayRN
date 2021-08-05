@@ -15,8 +15,10 @@ class AuthStore {
   signup = async (newUser, navigation) => {
     try {
       const res = await instance.post("/signup", newUser);
-      this.setUser(res.data.token);
-      navigation.replace("Explore");
+      runInAction(() => {
+        this.setUser(res.data.token);
+        navigation.replace("Explore");
+      });
     } catch (error) {
       console.error(error);
     }
@@ -53,15 +55,17 @@ class AuthStore {
 
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("myToken");
-    if (token) {
-      const currentTime = Date.now();
-      const user = decode(token);
-      if (user.exp >= currentTime) {
-        this.setUser(token);
-      } else {
-        this.signout();
+    runInAction(() => {
+      if (token) {
+        const currentTime = Date.now();
+        const user = decode(token);
+        if (user.exp >= currentTime) {
+          this.setUser(token);
+        } else {
+          this.signout();
+        }
       }
-    }
+    });
   };
 }
 const authStore = new AuthStore();

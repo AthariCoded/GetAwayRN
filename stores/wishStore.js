@@ -1,6 +1,6 @@
 import React from "react";
 
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 class WishStore {
@@ -12,7 +12,9 @@ class WishStore {
 
   fetchWishes = async () => {
     const wishes = await AsyncStorage.getItem("wish");
-    this.wishes = wishes ? JSON.parse(wishes) : [];
+    runInAction(() => {
+      this.wishes = wishes ? JSON.parse(wishes) : [];
+    });
   };
 
   addToWish = async (newWish) => {
