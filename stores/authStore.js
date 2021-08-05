@@ -1,5 +1,5 @@
 import instance from "./instance";
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import decode from "jwt-decode";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -25,9 +25,10 @@ class AuthStore {
   signin = async (userData, navigation) => {
     try {
       const res = await instance.post("/signin", userData);
-      this.setUser(res.data.token);
-
-      navigation.replace("Explore");
+      runInAction(() => {
+        this.setUser(res.data.token);
+        navigation.replace("Explore");
+      });
     } catch (error) {
       console.error(error);
     }
@@ -36,14 +37,18 @@ class AuthStore {
   signout = async () => {
     delete instance.defaults.headers.common.Authorization;
     await AsyncStorage.removeItem("myToken");
-    this.user = null;
+    runInAction(() => {
+      this.user = null;
+    });
   };
 
   setUser = async (token) => {
     await AsyncStorage.setItem("myToken", token);
-    instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    this.user = decode(token);
-    profileStore.setUserProfile(this.user.profile); //get profile when user logs/signs in
+    runInAction(() => {
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+      this.user = decode(token);
+      profileStore.setUserProfile(this.user.profile); //get profile when user logs/signs in
+    });
   };
 
   checkForToken = async () => {

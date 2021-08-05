@@ -68,10 +68,9 @@ const ProfilePage = () => {
             <Ionicons name="settings-sharp" size={24} color="grey" />
           </Button>
         </ProfileTitle>
-
-        <WishButton />
       </View>
       <ScrollView>
+        <WishButton />
         <ProfilePicture
           source={
             profileStore.profile.image
