@@ -118,3 +118,7 @@ export const AddTripButtonText = styled.Text`
   font-weight: bold;
   font-size: 18px;
 `;
+export const WishButtonStyling = styled.Text`
+  color: ${(props) => props.theme.pink};
+  font-size: 22px;
+`;

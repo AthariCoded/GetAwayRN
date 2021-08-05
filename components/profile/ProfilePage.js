@@ -6,7 +6,7 @@ import { useState, Spinner } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 //components
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { SafeAreaView, StyleSheet, TextInput, View } from "react-native";
 import {
   ProfileTitle,
   ProfileLabels,
@@ -26,8 +26,10 @@ import ProfileMap from "../map/ProfileMap";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import tripStore from "../../stores/tripStore";
-
+import WishButton from "../wish/WishButton";
+import Signout from "../authentication/Signout";
 const ProfilePage = () => {
+  // const { tripId } = route.params;
   if (profileStore.loading) return <Spinner />;
   const navigation = useNavigation();
   //states
@@ -56,15 +58,19 @@ const ProfilePage = () => {
 
   return (
     <SafeAreaView>
-      <ProfileTitle>
-        {authStore.user.username}
-        <Button
-          style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
-          onPress={() => toggleEdit()}
-        >
-          <Ionicons name="settings-sharp" size={24} color="grey" />
-        </Button>
-      </ProfileTitle>
+      <View style={{ display: "flex", flexDirection: " row " }}>
+        <ProfileTitle>
+          {authStore.user.username}
+          <Button
+            style={{ backgroundColor: "rgba(52, 52, 52, 0)" }}
+            onPress={() => toggleEdit()}
+          >
+            <Ionicons name="settings-sharp" size={24} color="grey" />
+          </Button>
+        </ProfileTitle>
+
+        <WishButton />
+      </View>
       <ScrollView>
         <ProfilePicture
           source={

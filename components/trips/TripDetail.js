@@ -4,11 +4,15 @@ import { useState } from "react";
 //stores
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
+import wishStore from "../../stores/wishStore";
+import profileStore from "../../stores/profileStore";
+
 //components
 import QBoxList from "../qbox/QBoxList";
 import { ScrollView } from "react-native";
-//icons
+
 import { AntDesign } from "@expo/vector-icons";
+
 
 //observer
 import { observer } from "mobx-react";
@@ -21,6 +25,8 @@ import {
   TripDetailDetails,
   TripDetailsProfilePicture,
   TripDetailUsername,
+  TripItemUsername,
+  WishButtonStyling,
   TripDetailLocation,
 } from "./styles";
 
@@ -28,8 +34,12 @@ import {
 import { Spinner } from "native-base";
 
 //button
-import { Button, Alert } from "react-native";
+
+import { Button, Alert, Text } from "react-native";
+
+
 import { Button as NativeButton } from "native-base";
+
 
 // buttons
 import UpdateButton from "../buttons/UpdateButton";
@@ -37,6 +47,11 @@ import UpdateButton from "../buttons/UpdateButton";
 const TripDetails = ({ route }) => {
   const { trip } = route.params;
 
+  const handleAdd = () => {
+    const newWish = { tripId: trip.id };
+    wishStore.addToWish(newWish);
+    Alert.alert(" You added to the wishlist");
+  };
   if (tripStore.loading) return <Spinner />;
 
   const [favorite, updateFavorite] = useState(trip.favorite);
@@ -60,6 +75,7 @@ const TripDetails = ({ route }) => {
 
   return (
     <>
+
       <ScrollView>
         <TripDetailWrapper>
           <TripDetailImage source={{ uri: trip.image }} />
@@ -68,9 +84,13 @@ const TripDetails = ({ route }) => {
           <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
           <TripDetailDetails>{trip.description}</TripDetailDetails>
           <TripDetailsProfilePicture
+
+
+          {/* <TripDetailsProfilePicture
+
             className="details"
             source={{ uri: trip.profilePicture }}
-          />
+          /> */}
 
           {authStore.user.id === +trip.userId ? (
             <NativeButton
@@ -98,7 +118,14 @@ const TripDetails = ({ route }) => {
           ) : (
             <></>
           )}
-
+{trip.userId !== authStore.user.id &&
+        !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
+          <WishButtonStyling onPress={handleAdd}>
+            <Text>Want To Go!</Text>
+          </WishButtonStyling>
+        ) : (
+          <></>
+        )}
           {authStore.user.id === trip.userId && (
             <Button
               onPress={submitHandler}
@@ -111,6 +138,7 @@ const TripDetails = ({ route }) => {
           <QBoxList trip={trip} />
         </TripDetailWrapper>
       </ScrollView>
+
     </>
   );
 };

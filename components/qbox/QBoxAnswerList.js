@@ -5,8 +5,8 @@ import { Spinner } from "native-base";
 
 //components
 import { StyleSheet, View } from "react-native";
-import QBoxItem from "./QBoxItem";
-import QBoxAdd from "./QBoxAdd";
+import QBoxAnswerItem from "./QBoxAnswerItem";
+
 
 //stores
 import qboxStore from "../../stores/qboxStore";
@@ -14,7 +14,7 @@ import qboxStore from "../../stores/qboxStore";
 //observer
 import { observer } from "mobx-react";
 
-const QBoxList = ({ trip }) => {
+const QBoxAnswerList = ({ trip }) => {
     if (qboxStore.loading) return <Spinner />;
 
     //change later
@@ -23,19 +23,18 @@ const QBoxList = ({ trip }) => {
     qboxes = qboxes.filter((qbox) => qbox.tripId === trip.id);
     const qboxList = qboxes.map((qbox) => (
 
-        <QBoxItem qbox={qbox} key={qbox.id} />
+        <QBoxAnswerItem qbox={qbox} key={qbox.id} trip={trip} />
 
     ));
 
     return (
         <>
-            <QBoxAdd trip={trip} />
             <View style={styles.questionBox}>{qboxList}</View>
         </>
     );
 };
 
-export default observer(QBoxList);
+export default observer(QBoxAnswerList);
 
 const styles = StyleSheet.create({
     questionBox: {

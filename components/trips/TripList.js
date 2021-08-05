@@ -6,7 +6,7 @@ import { List, Spinner } from "native-base";
 //components
 import { ScrollView } from "react-native";
 import TripItem from "./TripItem";
-
+import Signout from "../authentication/Signout";
 //styles
 import { ListWrapper, HomeLogo, HomeImage } from "./styles";
 
@@ -32,6 +32,7 @@ const TripList = ({ navigation }) => {
     <>
       <HomeLogo>
         <HomeImage source={require("../../assets/images/GetawayLogo.png")} />
+        <Signout />
       </HomeLogo>
       <ScrollView>
         <ListWrapper>

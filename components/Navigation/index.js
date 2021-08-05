@@ -12,8 +12,8 @@ import ProfilePage from "../profile/ProfilePage";
 import ProfileOwnerTrips from "../profile/ProfileOwnerTrips";
 import Signin from "../authentication/Signin";
 import Signup from "../authentication/Signup";
-
-
+import WishButton from "../wish/WishButton";
+import WishList from "../wish/WishList";
 //icons
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -98,6 +98,12 @@ export default function MyTabs() {
       <Stack.Screen
         name="ProfilePage"
         component={ProfilePage}
+        options={() => {
+          return {
+            headerShown: true,
+            headerRight: () => <WishButton />,
+          };
+        }}
       />
 
       <Stack.Screen
@@ -112,8 +118,10 @@ export default function MyTabs() {
         component={TripDetail}
         options={({ route }) => {
           const { trip } = route.params;
+
           return {
             title: trip.title,
+            headerRight: () => <WishButton />,
           };
         }}
       />
@@ -124,6 +132,7 @@ export default function MyTabs() {
           headerShown: false,
         }}
       />
+      <Stack.Screen name="WishList" component={WishList} />
     </Stack.Navigator>
   );
 }
