@@ -43,13 +43,6 @@ const Signup = ({ navigation }) => {
       <AuthOther onPress={() => navigation.navigate("Signin")}>
         Click here to sign in
       </AuthOther>
-      {authStore.user ? (
-        <Button onPress={authStore.signout}>
-          <Text>Signout</Text>
-        </Button>
-      ) : (
-        <></>
-      )}
     </AuthContainer>
   );
 };

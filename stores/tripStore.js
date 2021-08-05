@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import authStore from "./authStore";
 import instance from "./instance";
 
 class TripStore {
   trips = [];
+
   loading = true;
 
   constructor() {
@@ -55,6 +55,9 @@ class TripStore {
     }
   };
 
+  getTripById = (tripId) => this.trips.find((trip) => trip.id === tripId);
+
+
   tripFavoriteUpdate = async (updatedTrip) => {
     try {
       await instance.put(`/trips/fav/${updatedTrip.id}`);
@@ -63,7 +66,7 @@ class TripStore {
     } catch (error) {
       console.error(error);
     }
-  };
+
 }
 const tripStore = new TripStore();
 tripStore.fetchTrips();

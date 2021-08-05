@@ -4,13 +4,15 @@ import { useState } from "react";
 //stores
 import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
+import wishStore from "../../stores/wishStore";
+import profileStore from "../../stores/profileStore";
+
 //components
 import QBoxList from "../qbox/QBoxList";
-import QBoxAnswerList from "../qbox/QBoxAnswerList";
-
 import { ScrollView } from "react-native";
-//icons
+
 import { AntDesign } from "@expo/vector-icons";
+
 
 //observer
 import { observer } from "mobx-react";
@@ -23,15 +25,23 @@ import {
   TripDetailDetails,
   TripDetailsProfilePicture,
   TripItemUsername,
+
+  WishButtonStyling,
+
   TripDetailLocation,
+
 } from "./styles";
 
 //native-base
 import { Spinner } from "native-base";
 
 //button
-import { Button, Alert } from "react-native";
+
+import { Button, Alert, Text } from "react-native";
+
+
 import { Button as NativeButton } from "native-base";
+
 
 // buttons
 import UpdateButton from "../buttons/UpdateButton";
@@ -39,6 +49,11 @@ import UpdateButton from "../buttons/UpdateButton";
 const TripDetails = ({ route }) => {
   const { trip } = route.params;
 
+  const handleAdd = () => {
+    const newWish = { tripId: trip.id };
+    wishStore.addToWish(newWish);
+    Alert.alert(" You added to the wishlist");
+  };
   if (tripStore.loading) return <Spinner />;
 
   const [favorite, updateFavorite] = useState(trip.favorite);
@@ -62,6 +77,7 @@ const TripDetails = ({ route }) => {
 
   return (
     <>
+
       <ScrollView>
         <TripDetailWrapper>
 
@@ -103,19 +119,23 @@ const TripDetails = ({ route }) => {
           ) : (
             <></>
           )}
-
+{trip.userId !== authStore.user.id &&
+        !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
+          <WishButtonStyling onPress={handleAdd}>
+            <Text>Want To Go!</Text>
+          </WishButtonStyling>
+        ) : (
+          <></>
+        )}
           {authStore.user.id === trip.userId && (
             <Button onPress={submitHandler} title="delete" color="red"></Button>
           )}
 
           <QBoxList trip={trip} />
 
-          {authStore.user.id === trip.userId && (
-            <QBoxAnswerList trip={trip} />
-          )}
-
         </TripDetailWrapper>
       </ScrollView>
+
     </>
   );
 };
