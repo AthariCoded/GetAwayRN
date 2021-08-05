@@ -6,6 +6,8 @@ import tripStore from "../../stores/tripStore";
 import authStore from "../../stores/authStore";
 //components
 import QBoxList from "../qbox/QBoxList";
+import QBoxAnswerList from "../qbox/QBoxAnswerList";
+
 import { ScrollView } from "react-native";
 //icons
 import { AntDesign } from "@expo/vector-icons";
@@ -107,6 +109,10 @@ const TripDetails = ({ route }) => {
           )}
 
           <QBoxList trip={trip} />
+
+          {authStore.user.id === trip.userId && (
+            <QBoxAnswerList trip={trip} />
+          )}
 
         </TripDetailWrapper>
       </ScrollView>

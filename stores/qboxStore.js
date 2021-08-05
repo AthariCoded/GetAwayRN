@@ -24,7 +24,16 @@ class QBoxStore {
         try {
             await instance.post(`/qbox/${tripId}`, newQBox);
             this.fetchQBoxes();
-            // navigation.navigate("Explore");
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    qboxUpdate = async (updatedQbox, qboxId) => {
+        try {
+            await instance.put(`/qbox/${qboxId}`, updatedQbox);
+            const foundQbox = this.qboxes.find((qbox) => qbox.id === qboxId);
+            for (const key in foundQbox) foundQbox[key] = updatedQbox[key];
         } catch (error) {
             console.error(error);
         }
