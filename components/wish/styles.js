@@ -6,8 +6,9 @@ export const PlaneButtonStyled = styled(FontAwesome5)`
   margin-right: 10px;
 `;
 export const WishTextStyled = styled.Text`
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.secondaryColor};
   font-size: 20px;
+  align-self: center;
 `;
 export const AntDesignIcon = styled(AntDesign)`
   color: ${(props) => props.theme.red};

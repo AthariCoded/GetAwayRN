@@ -13,7 +13,6 @@ import { ScrollView } from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
 
-
 //observer
 import { observer } from "mobx-react";
 
@@ -37,9 +36,7 @@ import { Spinner } from "native-base";
 
 import { Button, Alert, Text } from "react-native";
 
-
 import { Button as NativeButton } from "native-base";
-
 
 // buttons
 import UpdateButton from "../buttons/UpdateButton";
@@ -75,7 +72,6 @@ const TripDetails = ({ route }) => {
 
   return (
     <>
-
       <ScrollView>
         <TripDetailWrapper>
           <TripDetailImage source={{ uri: trip.image }} />
@@ -83,14 +79,6 @@ const TripDetails = ({ route }) => {
           <TripDetailUsername>by: {trip.user.username}</TripDetailUsername>
           <TripDetailLocation> {trip.locationTitle}</TripDetailLocation>
           <TripDetailDetails>{trip.description}</TripDetailDetails>
-          <TripDetailsProfilePicture
-
-
-          {/* <TripDetailsProfilePicture
-
-            className="details"
-            source={{ uri: trip.profilePicture }}
-          /> */}
 
           {authStore.user.id === +trip.userId ? (
             <NativeButton
@@ -118,14 +106,14 @@ const TripDetails = ({ route }) => {
           ) : (
             <></>
           )}
-{trip.userId !== authStore.user.id &&
-        !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
-          <WishButtonStyling onPress={handleAdd}>
-            <Text>Want To Go!</Text>
-          </WishButtonStyling>
-        ) : (
-          <></>
-        )}
+          {trip.userId !== authStore.user.id &&
+          !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
+            <WishButtonStyling onPress={handleAdd}>
+              <Text>Want To Go!</Text>
+            </WishButtonStyling>
+          ) : (
+            <></>
+          )}
           {authStore.user.id === trip.userId && (
             <Button
               onPress={submitHandler}
@@ -138,7 +126,6 @@ const TripDetails = ({ route }) => {
           <QBoxList trip={trip} />
         </TripDetailWrapper>
       </ScrollView>
-
     </>
   );
 };
