@@ -1,15 +1,15 @@
 import styled from "styled-components/native";
 
 export const ListWrapper = styled.View`
-  margin-left: -8.5px;
+  margin-left: -8.5;
   margin-top: -15px;
 `;
 
-export const HomeLogo = styled.View`
+export const QBoxLogo = styled.View`
   align-items: center;
   justify-content: center;
-  margin-top: 12%;
-  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 `;
 
 export const HomeImage = styled.Image``;
@@ -32,20 +32,18 @@ export const TripDetailTitle = styled.Text`
   margin-bottom: -40px;
 `;
 
-export const TripItemTitle = styled.Text`
+export const QBoxTitle = styled.Text`
   align-self: flex-start;
   font-size: 20px;
   font-weight: bold;
   margin: 10px;
   margin-bottom: -10px;
-  margin-left: -35px;
   text-align: center;
 `;
 
 export const TripItemUsername = styled.Text`
   font-size: 13px;
   padding-top: 3px;
-  margin-top: 40px;
 `;
 
 export const TripItemProfilePicture = styled.Image`
@@ -70,11 +68,6 @@ export const TripDetailDetails = styled.Text`
   ${"" /* margin-top: 20px; */}
 `;
 
-export const TripDetailLocation = styled.Text`
-  font-size: 20px;
-  margin-top: 40px;
-`;
-
 export const TripListItem = styled.View`
   flex-direction: row;
   ${"" /* justify-content: center; */}
@@ -88,7 +81,6 @@ export const AddTripTitle = styled.Text`
   font-size: 30px;
   margin: 20px;
   margin-left: 10px;
-  margin-top: 90px;
 `;
 
 export const AddTripLabels = styled.Text`
@@ -111,8 +103,4 @@ export const AddTripButtonText = styled.Text`
   color: ${(props) => props.theme.backgroundColor};
   font-weight: bold;
   font-size: 18px;
-`;
-export const WishButtonStyling = styled.Text`
-  color: ${(props) => props.theme.pink};
-  font-size: 22px;
 `;

@@ -15,8 +15,14 @@ import {
 //observer
 import { observer } from "mobx-react";
 
+//stores
 import profileStore from "../../stores/profileStore";
 import wishStore from "../../stores/wishStore";
+
+
+//icons
+import { AntDesign } from "@expo/vector-icons";
+
 
 const TripItem = ({ trip, navigation }) => {
   //fetch a profile object of trip owner
@@ -33,9 +39,20 @@ const TripItem = ({ trip, navigation }) => {
         <TripDetailImage source={{ uri: trip.image }} />
 
         <TripItemProfilePicture source={{ uri: trip.profilePicture }} />
-        <TripItemTitle>{trip.title}</TripItemTitle>
+
+        <TripItemTitle>
+          {trip.title}{" "}
+          {trip.favorite ? (
+            <AntDesign name="heart" size={18} color="#ED3293" />
+          ) : (
+            []
+          )}
+        </TripItemTitle>
+        <TripItemUsername>{trip.locationTitle}</TripItemUsername>
         <TripItemUsername onPress={profileHandler}>
-          by {trip.user.username}{" "}
+          {" "}
+          by {trip.user.username}
+
         </TripItemUsername>
       </TripListItem>
     </List.Item>

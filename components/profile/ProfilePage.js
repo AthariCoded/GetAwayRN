@@ -14,11 +14,13 @@ import {
   SaveProfileButtonText,
   ProfilePicture,
   ProfileTripsLabel,
+  ProfileMapLabel,
 } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
 import { Button } from "native-base";
 import ProfileTrips from "./ProfileTrips";
 import { ScrollView } from "react-native";
+import ProfileMap from "../map/ProfileMap";
 
 //store
 import authStore from "../../stores/authStore";
@@ -39,7 +41,7 @@ const ProfilePage = () => {
   const [profile, setProfile] = useState({
     bio: profileStore.profile.bio ?? "",
     image: profileStore.profile.image ?? "",
-    id: authStore.user.profile,
+    id: authStore.user.profile.id,
   });
 
   const updateProfile = () => {
@@ -96,7 +98,6 @@ const ProfilePage = () => {
           editable={isEditing ? true : false}
           value={profile.bio}
         />
-
         {isEditing ? (
           <>
             <ProfileLabels>Profile Image Address</ProfileLabels>
@@ -107,12 +108,18 @@ const ProfilePage = () => {
               onChangeText={(image) => setProfile({ ...profile, image })}
               placeholder="Trip Image Adress"
             />
+
             <SaveProfileButton onPress={() => updateProfile()}>
               <SaveProfileButtonText>Save changes</SaveProfileButtonText>
             </SaveProfileButton>
           </>
         ) : (
-          []
+          <>
+            <ProfileMapLabel>
+              See where {authStore.user.username} has been
+            </ProfileMapLabel>
+            <ProfileMap trips={userTrips}></ProfileMap>
+          </>
         )}
 
         {!isEditing ? (

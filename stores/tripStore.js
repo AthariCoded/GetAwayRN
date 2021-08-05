@@ -54,7 +54,19 @@ class TripStore {
       console.error(error);
     }
   };
+
   getTripById = (tripId) => this.trips.find((trip) => trip.id === tripId);
+
+
+  tripFavoriteUpdate = async (updatedTrip) => {
+    try {
+      await instance.put(`/trips/fav/${updatedTrip.id}`);
+      const foundTrip = this.trips.find((trip) => trip.id === updatedTrip.id);
+      foundTrip["favorite"] = !foundTrip["favorite"];
+    } catch (error) {
+      console.error(error);
+    }
+
 }
 const tripStore = new TripStore();
 tripStore.fetchTrips();
