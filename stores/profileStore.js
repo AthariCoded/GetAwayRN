@@ -1,4 +1,4 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import instance from "./instance";
 
 class ProfileStore {
@@ -14,8 +14,10 @@ class ProfileStore {
   fetchProfiles = async () => {
     try {
       const response = await instance.get("/profiles/");
-      this.profiles = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.profiles = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("fetchProfiles", error);
     }

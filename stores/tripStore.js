@@ -14,8 +14,10 @@ class TripStore {
   fetchTrips = async () => {
     try {
       const response = await instance.get("/trips");
-      this.trips = response.data;
-      this.loading = false;
+      runInAction(() => {
+        this.trips = response.data;
+        this.loading = false;
+      });
     } catch (error) {
       console.error("fetchTrips", error);
     }
@@ -24,8 +26,10 @@ class TripStore {
   tripDelete = async (TripId) => {
     try {
       await instance.delete(`/trips/${TripId}`);
-      const updatedTrips = this.trips.filter((trip) => trip.id !== TripId);
-      this.trips = updatedTrips;
+      runInAction(() => {
+        const updatedTrips = this.trips.filter((trip) => trip.id !== TripId);
+        this.trips = updatedTrips;
+      });
     } catch (error) {
       console.error(error);
     }
@@ -36,8 +40,10 @@ class TripStore {
       const formData = new FormData();
       for (const key in newTrip) formData.append(key, newTrip[key]);
       const response = await instance.post("/trips", newTrip);
-      this.fetchTrips();
-      navigation.navigate("Explore");
+      runInAction(() => {
+        this.fetchTrips();
+        navigation.navigate("Explore");
+      });
     } catch (error) {
       console.error(error);
     }
@@ -48,9 +54,10 @@ class TripStore {
       const formData = new FormData();
       for (const key in updatedTrip) formData.append(key, updatedTrip[key]);
       await instance.put(`/trips/${updatedTrip.id}`, formData);
-      const foundTrip = this.trips.find((trip) => trip.id === updatedTrip.id);
-
-      for (const key in foundTrip) foundTrip[key] = updatedTrip[key];
+      runInAction(() => {
+        const foundTrip = this.trips.find((trip) => trip.id === updatedTrip.id);
+        for (const key in foundTrip) foundTrip[key] = updatedTrip[key];
+      });
     } catch (error) {
       console.error(error);
     }
