@@ -9,6 +9,7 @@ import profileStore from "../../stores/profileStore";
 
 //components
 import QBoxList from "../qbox/QBoxList";
+import QBoxAnswerList from "../qbox/QBoxAnswerList";
 import { ScrollView } from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
@@ -107,7 +108,7 @@ const TripDetails = ({ route }) => {
             <></>
           )}
           {trip.userId !== authStore.user.id &&
-          !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
+            !wishStore.wishes.some((area) => area.tripId === trip.id) ? (
             <WishButtonStyling onPress={handleAdd}>
               <Text>Want To Go!</Text>
             </WishButtonStyling>
@@ -124,6 +125,9 @@ const TripDetails = ({ route }) => {
           )}
 
           <QBoxList trip={trip} />
+          {authStore.user.id === trip.userId && (
+            <QBoxAnswerList trip={trip} />
+          )}
         </TripDetailWrapper>
       </ScrollView>
     </>
