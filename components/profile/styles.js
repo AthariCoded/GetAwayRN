@@ -5,6 +5,7 @@ export const ProfileTitle = styled.Text`
   font-size: 30px;
   margin: 20px;
   margin-left: 10px;
+  margin-bottom: -10px;
   color: ${(props) => props.theme.mainColor};
 `;
 
@@ -52,5 +53,5 @@ export const ProfilePicture = styled.Image`
   border-radius: 100px;
   overflow: hidden;
   align-self: center;
-  margin-top: 10px;
+  margin-top: -30px;
 `;
