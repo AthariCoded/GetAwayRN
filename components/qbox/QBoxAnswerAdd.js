@@ -17,7 +17,6 @@ const QBoxAnswerAdd = ({ trip, qbox }) => {
     const submitHandler = async () => {
         await qboxStore.qboxUpdate(ans, qbox.id);
     }
-    console.log(ans);
 
     return (
         <View>

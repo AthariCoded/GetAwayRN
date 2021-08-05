@@ -26,7 +26,6 @@ const QBoxAnswerList = ({ trip }) => {
         <QBoxAnswerItem qbox={qbox} key={qbox.id} trip={trip} />
 
     ));
-
     return (
         <>
             <View style={styles.questionBox}>{qboxList}</View>
